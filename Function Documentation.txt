@@ -1,0 +1,26 @@
+Clear Terminal Function
+    Description:
+        Clear all prints on the terminal 
+    Syntax:
+        clearTerminal()
+
+Loading Animation Function:
+    Description:
+        Creates a loading anmation in the terminal
+    Syntax: 
+        loadingAnimation(reduntant text, number of animation loops)
+        - Reduntant text is text while will stay on screen
+            - Has to be a string
+            - For multiline support add \n in string where a new line is wanted to be created
+
+        - Number of animation loops is the number of times the animations repeat. Remember, the more loops, the longer the animation.
+            - Has to be a integer
+
+Hashing Function:
+    Description:
+        Hashes text using the sha3-512 algorithm
+    Syntax:
+        hashText(text)
+        - Text is the input text that needs to be hashed
+            - Has to be a string
+            - Variables are accepted as long as they contain a string
