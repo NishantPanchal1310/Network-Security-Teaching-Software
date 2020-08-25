@@ -8,4 +8,11 @@ Deliverables
 Week 1 (Aug 24th): 
 
     Develop a program to read text from the terminal and a file, to hash this text and store the hash as a hexadecimal in a file.
+Plan:
+Notes: use md5 hashing for now.
 
+Coding ideas:
+Creating a class of message, with attributes: text = " ", filename = "Not found", message_list = []
+Possible methods: encode() - This basically hashes the text and then converts it hexadecimal
+                  readFile() - This method is to retrieve a message from a file and then append it to message_list.
+                
