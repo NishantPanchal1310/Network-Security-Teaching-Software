@@ -24,3 +24,10 @@ Hashing Function:
         - Text is the input text that needs to be hashed
             - Has to be a string
             - Variables are accepted as long as they contain a string
+
+Menu Function:
+    Description:
+
+    Syntax:
+        var = menuFunction(menu, [optionA, optionb, etc...])
+        - The function must equal a variable as it return a 
