@@ -9,6 +9,7 @@ import os
 def clearTerminal():
     os.system('cls')
 
+
 # Define the function to get a loading screen
 ## redundantText can be set to None is nothing is wanted as the redundant text
 def loadingAnimation(redundantText, numberOfAnimationLoops):
@@ -28,6 +29,7 @@ def loadingAnimation(redundantText, numberOfAnimationLoops):
             sleep(0.7) # Sleeps for 0.7 seconds
             clearTerminal() # Clears the terminal
            
+           
 #Hashes message with sha3_512      
 def hashText(text):
     byte_obj = (str(text)).encode()
@@ -46,13 +48,15 @@ def readFile(filename):
     except:
         return "File not found"
 
+
 #save given text to a pickle file of a given name
 def saveFile(text, filename):
     pickle_out = open(str(filename),"wb")
     pickle.dump(text, pickle_out)
     pickle_out.close()
 
-# Sukhman, coudl you comment this. I finished the documentation, if you need more help. If you still need help dm me on insta. 
+
+# Sukhman, coudl you comment this. I finished the documentation, so if you need help, you can reference that
 def menuFunction(menuTitle, optionList):
     if menuTitle != None:
         print(menuTitle)
