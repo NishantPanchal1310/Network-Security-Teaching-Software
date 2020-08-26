@@ -51,6 +51,12 @@ def saveFilePk(text, filename):
     pickle.dump(text, pickle_out)
     pickle_out.close()
     
-        
+ 
 
+##TESTING FUNCTION##
 
+#Test loading animation        
+if __name__ == "__main__":
+    loadingAnimation("test")
+    sleep(3)
+    loadingAnimation(None)
