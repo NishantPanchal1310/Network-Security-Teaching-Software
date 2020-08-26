@@ -51,8 +51,20 @@ def saveFile(text, filename):
     pickle_out = open(str(filename),"wb")
     pickle.dump(text, pickle_out)
     pickle_out.close()
+
+# Sukhman, coudl you comment this. I finished the documentation, if you need more help. If you still need help dm me on insta. 
+def menuFunction(menuTitle, optionList):
+    if menuTitle != None:
+        print(menuTitle)
     
- 
+    for r in range(0, len(optionList)):
+        print(f" [{r}], - {optionList[r]}")
+
+    print("[99] - Exit")
+
+    optionChoosen = input('Enter option: ')
+    
+    return optionChoosen
 
 
 ##TESTING FUNCTIONS##        

@@ -1,10 +1,7 @@
-from Hashing_Function import hashText
-from time import sleep
-from Clear_Terminal_Function import clearTerminal
+
 
 ### Welcome screen
 #------------------------------------------------------------------------#
-
 
         
 
