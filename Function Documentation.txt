@@ -1,3 +1,16 @@
+
+Deliverables
+
+    Software fully documented and written in Python 3.
+    Technical documentation, including installation instructions, libraries used,  and UML class diagrams.
+    Details about what testing was done and what data was used.
+    Your group will be required to deliver a 10 minute demonstration of your software, its functionality and how you can use it to perform the given tasks.
+    
+Week 1 (Aug 24th): Develop a program to read text from the terminal and a file, to hash this text and store the hash as a hexadecimal in a file.
+
+Implementing RSA:
+https://pypi.org/project/rsa/ 
+
 Clear Terminal Function
     Description:
         Clear all prints on the terminal 
@@ -24,6 +37,7 @@ Hashing Function:
         - Text is the input text that needs to be hashed
             - Has to be a string
             - Variables are accepted as long as they contain a string
+<<<<<<< HEAD
 
 Menu Function:
     Description:
@@ -31,3 +45,26 @@ Menu Function:
     Syntax:
         var = menuFunction(menu, [optionA, optionb, etc...])
         - The function must equal a variable as it return a 
+=======
+            
+Read File Pickle:
+    Description:
+        tries to take a pickle file of a specified name and read the contents
+        It will return the message within the pickle file, unless the files does not exist.
+    Syntax:
+        readFilePk(filename)
+        - The filename is required for the function to go retrieve the file
+        - has to be strng
+        - variables that are not string are converted to string anyway.
+        
+Save file Pickle:
+    Description:
+        Takes a given text and adds it to a given pickle file specified by filename.
+     Syntax: 
+        saveFilePk(text, filenmae)
+        - both filename and text are to be given as string.
+        
+
+
+                
+>>>>>>> 255cb13cc61c7c4c5c12b6cc0974350cbe26ca48
