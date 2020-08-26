@@ -34,6 +34,7 @@ def hashText(text):
     hash_obj = hashlib.sha3_512(byte_obj)
     output = hash_obj.hexdigest()
     return output
+
     
 #Reads pickle file with a given name and returns whatever is stored
 def readFilePk(filename):
@@ -53,10 +54,14 @@ def saveFilePk(text, filename):
     
  
 
-##TESTING FUNCTION##
-
+##TESTING FUNCTIONS##
 #Test loading animation        
 if __name__ == "__main__":
     loadingAnimation("test")
     sleep(3)
     loadingAnimation(None)
+ 
+#Testing Hasing function
+if __name__ == "__main__":
+    text = "Test"
+    print(hashText(text))
