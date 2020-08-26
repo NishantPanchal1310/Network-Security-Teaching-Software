@@ -13,37 +13,42 @@ https://pypi.org/project/rsa/
 
 Clear Terminal Function
     Description:
-        Clear all prints on the terminal 
+        Clear all prints on the terminal.
     Syntax:
         clearTerminal()
 
 Loading Animation Function:
     Description:
-        Creates a loading anmation in the terminal
+        Creates a loading anmation in the terminal.
     Syntax: 
         loadingAnimation(reduntant text, number of animation loops)
-        - Reduntant text is text while will stay on screen
-            - Has to be a string
-            - For multiline support add \n in string where a new line is wanted to be created
-
+        - Reduntant text is text while will stay on screen.
+            - Has to be a string.
+            - For multiline support add \n in string where a new line is wanted to be created.
         - Number of animation loops is the number of times the animations repeat. Remember, the more loops, the longer the animation.
             - Has to be a integer
 
 Hashing Function:
     Description:
-        Hashes text using the sha3-512 algorithm
+        Hashes text using the sha3-512 algorithm.
     Syntax:
         hashText(text)
-        - Text is the input text that needs to be hashed
-            - Has to be a string
-            - Variables are accepted as long as they contain a string
+        - Text is the input text that needs to be hashed.
+            - Has to be a string.
+            - Variables are accepted as long as they contain a string.
 
 Menu Function:
     Description:
-
+        Print a menu and allow user select an option
     Syntax:
-        var = menuFunction(menu, [optionA, optionb, etc...])
-        - The function must equal a variable as it return a 
+        var = menuFunction(menu title, [optionA, optionb, etc...])
+        - The function must equal a variable as it return a option value.
+        - Menu title is the title of the menu.
+            - Enter None for no title
+            - Must be string.
+            - Can be variable which contain a string.
+        - An list of option must be entered, even if it is just one value.
+            - The list must only contain strings.
             
 Read File Pickle:
     Description:
@@ -51,8 +56,8 @@ Read File Pickle:
         It will return the message within the pickle file, unless the files does not exist.
     Syntax:
         readFile(filename)
-        - The filename is required for the function to go retrieve the file
-        - has to be strng
+        - The filename is required for the function to go retrieve the file.
+        - has to be string.
         - variables that are not string are converted to string anyway.
         
 Save file Pickle:
