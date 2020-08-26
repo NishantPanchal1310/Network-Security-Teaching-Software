@@ -1,3 +1,14 @@
+
+Deliverables
+
+    Software fully documented and written in Python 3.
+    Technical documentation, including installation instructions, libraries used,  and UML class diagrams.
+    Details about what testing was done and what data was used.
+    Your group will be required to deliver a 10 minute demonstration of your software, its functionality and how you can use it to perform the given tasks.
+Week 1 (Aug 24th): Develop a program to read text from the terminal and a file, to hash this text and store the hash as a hexadecimal in a file.
+
+
+
 Clear Terminal Function
     Description:
         Clear all prints on the terminal 
@@ -24,3 +35,6 @@ Hashing Function:
         - Text is the input text that needs to be hashed
             - Has to be a string
             - Variables are accepted as long as they contain a string
+
+
+                
