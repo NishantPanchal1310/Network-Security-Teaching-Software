@@ -3,9 +3,11 @@ import hashlib
 import base64
 import pickle
 from time import sleep
-from Clear_Terminal_Function import clearTerminal
+import os
 
-
+#Clears the terminal 
+def clearTerminal():
+    os.system('cls')
 
 # Define the function to get a loading screen
 ## redundantText can be set to None is nothing is wanted as the redundant text
@@ -25,8 +27,7 @@ def loadingAnimation(redundantText, numberOfAnimationLoops):
             print(loadingStr) # Prints the loading string
             sleep(0.7) # Sleeps for 0.7 seconds
             clearTerminal() # Clears the terminal
-            
-    
+           
 #Hashes message with sha3_512      
 def hashText(text):
     byte_obj = (str(text)).encode()
@@ -49,6 +50,7 @@ def saveFilePk(text, filename):
     pickle_out = open(str(filename),"wb")
     pickle.dump(text, pickle_out)
     pickle_out.close()
+    
         
 
 
