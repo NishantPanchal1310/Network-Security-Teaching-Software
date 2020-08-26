@@ -37,7 +37,6 @@ Hashing Function:
         - Text is the input text that needs to be hashed
             - Has to be a string
             - Variables are accepted as long as they contain a string
-<<<<<<< HEAD
 
 Menu Function:
     Description:
@@ -45,7 +44,6 @@ Menu Function:
     Syntax:
         var = menuFunction(menu, [optionA, optionb, etc...])
         - The function must equal a variable as it return a 
-=======
             
 Read File Pickle:
     Description:
@@ -67,4 +65,3 @@ Save file Pickle:
 
 
                 
->>>>>>> 255cb13cc61c7c4c5c12b6cc0974350cbe26ca48
