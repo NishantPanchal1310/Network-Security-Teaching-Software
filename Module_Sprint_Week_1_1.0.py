@@ -54,14 +54,14 @@ def saveFilePk(text, filename):
     
  
 
+
 ##TESTING FUNCTIONS##
 #Test loading animation        
 if __name__ == "__main__":
-    loadingAnimation("test")
+    loadingAnimation("test",4)
     sleep(3)
-    loadingAnimation(None)
  
-#Testing Hasing function
+#Testing Hashing function
 if __name__ == "__main__":
     text = "Test"
     print(hashText(text))
