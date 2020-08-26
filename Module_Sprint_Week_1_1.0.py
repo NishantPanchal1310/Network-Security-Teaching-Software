@@ -37,7 +37,7 @@ def hashText(text):
 
     
 #Reads pickle file with a given name and returns whatever is stored
-def readFilePk(filename):
+def readFile(filename):
     try:
         pickle_in = open(str(filename),"rb")
         message_get = pickle.load(pickle_in)
@@ -47,7 +47,7 @@ def readFilePk(filename):
         return "File not found"
 
 #save given text to a pickle file of a given name
-def saveFilePk(text, filename):
+def saveFile(text, filename):
     pickle_out = open(str(filename),"wb")
     pickle.dump(text, pickle_out)
     pickle_out.close()
@@ -55,13 +55,12 @@ def saveFilePk(text, filename):
  
 
 
-##TESTING FUNCTIONS##
-#Test loading animation        
+##TESTING FUNCTIONS##        
 if __name__ == "__main__":
+    #Test loading animation
     loadingAnimation("test",4)
     sleep(3)
  
-#Testing Hashing function
-if __name__ == "__main__":
+    #Testing Hashing function
     text = "Test"
     print(hashText(text))
