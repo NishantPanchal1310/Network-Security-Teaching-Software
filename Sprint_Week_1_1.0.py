@@ -27,34 +27,17 @@ class Message:
     
     #Reads message_list in a pickle file with a given name and returns message_list
     def readFilePk(self, filename):
-        pickle_in = open(str(filename),"rb")
-        self.message_list = pickle.load(pickle_in)
+        try 
+            pickle_in = open(str(filename),"rb")
+            self.message_list = pickle.load(pickle_in)
 
-        pickle_in.close()
-        return self.message_list
+            pickle_in.close()
+            return self.message_list
+        except:
+            return "File not found"
 
     #save message_list to a pickle file of a given name
     def saveFilePk(self, filename):
         pickle_out = open(str(filename),"wb")
         pickle.dump(self.message_list, pickle_out)
         pickle_out.close()
-
-
-'''
-##To test saveFilePk() and readFilePk()
-
-#creates new object
-m_test = Message("test2") 
-#using addText, append message of object into message_list
-m_test.addText(m_test.text)
-#save message_list to a pickle file known as "dictpickle" (to add user input for any name)
-m_test.saveFilePk("dictpickle")
-#Retrieve message_list and then print it
-print(m_test.readFilePk("dictpickle"))
-'''
-
-'''
-#2 lines to test hashMessage()
-newmessage = Message("yo wassup")
-print(newmessage.hashMessage(newmessage.text))
-'''
