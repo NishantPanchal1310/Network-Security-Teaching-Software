@@ -21,21 +21,25 @@ Loading Animation Function:
     Description:
         Creates a loading anmation in the terminal.
     Syntax: 
-        loadingAnimation(reduntant text, number of animation loops)
+        loadingAnimation(reduntant text, number of animation loops, animation text)
         - Reduntant text is text while will stay on screen.
             - Has to be a string.
             - For multiline support add \n in string where a new line is wanted to be created.
         - Number of animation loops is the number of times the animations repeat. Remember, the more loops, the longer the animation.
             - Has to be a integer
+        - The animation text is the text after the which the dot animation plays
+            - Has to be a string
+            - Can be a variable while contains a string
 
 Hashing Function:
     Description:
         Hashes text using the sha3-512 algorithm.
     Syntax:
-        hashText(text)
+        var = hashText(text)
         - Text is the input text that needs to be hashed.
             - Has to be a string.
             - Variables are accepted as long as they contain a string.
+        - Has to equal a variable as it returns an output
 
 Menu Function:
     Description:
@@ -49,6 +53,7 @@ Menu Function:
             - Can be variable which contain a string.
         - An list of option must be entered, even if it is just one value.
             - The list must only contain strings.
+        - When the user wishes to exit and they enter 99, exit as a string is returned.
             
 Read File Pickle:
     Description:

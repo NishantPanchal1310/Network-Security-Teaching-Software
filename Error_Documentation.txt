@@ -1,0 +1,17 @@
+Error 1:
+    Description:
+        This error is due to the file not being found.
+    Possible causes:
+        - Incorrect filename.
+        - Not formated right (format usually provided above the input line).
+        - Incorrect path.
+        - The file in not in the same directory (only if the only the file is entered).
+        - The file does not exist.
+
+Error 2:
+    Description:
+        This error is due to an invalid input
+    Possible causes:
+        - Input out of an specificed range
+        - Input that has not meaning
+        - Input that is not a number

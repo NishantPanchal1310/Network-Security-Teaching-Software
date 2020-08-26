@@ -1,4 +1,8 @@
-#SPRINT WEEK 1: BUILD 1.0
+### Version Info
+# Version: SW 1
+# Build Number: 1.0
+#------------------------------------------------------------------------#
+
 import hashlib
 import base64
 import pickle
@@ -12,12 +16,12 @@ def clearTerminal():
 
 # Define the function to get a loading screen
 ## redundantText can be set to None is nothing is wanted as the redundant text
-def loadingAnimation(redundantText, numberOfAnimationLoops):
+def loadingAnimation(redundantText, numberOfAnimationLoops, animatationText):
     
     clearTerminal() # Clears the terminal 
 
-    for a in range(0, numberOfAnimationLoops, ): # Loops animation twice
-        loadingStr = "loading" # Resets the string to loading
+    for a in range(0, numberOfAnimationLoops): # Loops animation for the number specifed
+        loadingStr = animatationText # Resets the string to the animationText
         
         for b in range(0, 4): # Code is repeated four times
             loadingStr += "." # An dot is added to the end of the string loading
@@ -46,7 +50,10 @@ def readFile(filename):
         pickle_in.close()
         return message_get
     except:
-        return "File not found"
+        print("Error 1\n For more information, please go to the Error_Documentation.txt file")
+        input("Press enter to dismiss")
+        
+        return "Error 1"
 
 
 #save given text to a pickle file of a given name
@@ -56,19 +63,37 @@ def saveFile(text, filename):
     pickle_out.close()
 
 
-# Sukhman, coudl you comment this. I finished the documentation, so if you need help, you can reference that
+# Sukhman, could you comment this. I finished the documentation, so if you need help, you can reference that
 def menuFunction(menuTitle, optionList):
-    if menuTitle != None:
-        print(menuTitle)
+    validInput = 0
     
-    for r in range(0, len(optionList)):
-        print(f" [{r}], - {optionList[r]}")
+    while validInput != 1:
+        clearTerminal()
+        
+        if menuTitle != None:
+            print(menuTitle)
+        
+        for r in range(0, len(optionList)):
+            print(f" [{r+1}] - {optionList[r]}")
 
-    print("[99] - Exit")
+        print("[99] - Exit")
 
-    optionChoosen = input('Enter option: ')
-    
-    return optionChoosen
+        optionChoosen = input('Enter option: ')
+        
+        if optionChoosen == "99":
+            exit()
+        
+        try:
+            if int(optionChoosen) > 0 and int(optionChoosen) <= (r+1):
+                return optionChoosen
+            else:
+                print("Error 2\n For more information, please go to the Error_Documentation.txt file")
+                input("Press enter to dismiss")
+        except:
+            print("Error 2\n For more information, please go to the Error_Documentation.txt file")
+            input("Press enter to dismiss")
+
+    clearTerminal()
 
 
 ##TESTING FUNCTIONS##        
