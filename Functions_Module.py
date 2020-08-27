@@ -63,7 +63,7 @@ def saveFilePK(text, filename):
     pickle_out.close()
 
 
-# Sukhman, could you comment this. I finished the documentation, so if you need help, you can reference that
+#A time-saving method to quickly produce an interface for the user of this program
 def menuFunction(menuTitle, optionList):
     validInput = 0
     
