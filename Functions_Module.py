@@ -43,7 +43,7 @@ def hashText(text):
 
     
 #Reads pickle file with a given name and returns whatever is stored
-def readFile(filename):
+def readFilePK(filename):
     try:
         pickle_in = open(str(filename),"rb")
         message_get = pickle.load(pickle_in)
@@ -57,7 +57,7 @@ def readFile(filename):
 
 
 #save given text to a pickle file of a given name
-def saveFile(text, filename):
+def saveFilePK(text, filename):
     pickle_out = open(str(filename),"wb")
     pickle.dump(text, pickle_out)
     pickle_out.close()
