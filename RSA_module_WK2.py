@@ -22,12 +22,21 @@ def gen_key():
     priv_key = priv_key[2:]
     priv_key = priv_key.split(", ")
     
+    #Convert keys to int
+    n_key = int(pub_key[0])
+    d_key = int(priv_key[2])
+    e_key = int(pub_key[1])
+    
+    #convert int to hex
+    n_key = hex(n_key)
+    d_key = hex(d_key)
+    e_key = hex(e_key)
 
     #keys are given as [<public key>] - have to modify to return as int not str, purely testing.
-    keys = "n: " + str(pub_key[0]) + "\nd: " + str(priv_key[2]) + "\ne value: " + str(pub_key[1])
+    keys = "n: " + str(n_key) + "\nd: " + str(d_key) + "\ne value: " + str(e_key)
     return keys
     #Instead of return directly interact with students class
-    #Note, the keys returned are in base 10 already.
+    #Note, the keys returned are in hexadecimal
 
 
 #Message as string, e and n as str and in base 16
