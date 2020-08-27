@@ -73,5 +73,37 @@ Save file Pickle:
         - both filename and text are to be given as string.
         
 
+RSA_encode:
+    Description:
+        takes a message to encode, the e value of a public key, the n value of the public and private keys and returns it in the form of hexadecimal.
+     syntax: 
+         RSA_encode(message, e, n)
+        - message in string
+        - e and n need to be str and in base 16.
+     
+     
+RSA_decode:
+    Description:
+        takes a ciphered message, d and n of the private key, and then deciphers the message using the RSA algorithm and returns it as string
+     syntax: 
+        RSA_decode(cipher, d, n)
+        - cipher needs to be in str, in base 16 (preferably use an encoded cipher from RSA_encode function).
+        - d and n need to be str and in base 16.
+        
+        
+##Experimental: still looking for method to implement rsa outside of installing it through cmd.
 
+gen_key:
+    Description:
+        using installed module rsa, generates a public (e,n) and private (d,n) key in 128 bit and returns it as string of hexadecimal 
+        (Future development: give a list where keys = [e, d, n]. Right now: experimentally given as string of hexadecimal outputs)
+    syntax:
+        No input required.
+        returns a string labeling which keys are which [in hexadecimal]
+        Possibly implement as method or interdependence of Student() class.
+
+     
+ 
+ 
+        
                 
