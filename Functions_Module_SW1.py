@@ -32,8 +32,7 @@ def loadingAnimation(redundantText, numberOfAnimationLoops, animatationText):
             print(loadingStr) # Prints the loading string
             sleep(0.7) # Sleeps for 0.7 seconds
             clearTerminal() # Clears the terminal
-           
-           
+                   
 #Hashes message with sha3_512      
 def hashText(text):
     byte_obj = (str(text)).encode()
