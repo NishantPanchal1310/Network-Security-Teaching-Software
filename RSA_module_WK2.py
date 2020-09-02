@@ -1,10 +1,12 @@
 import hashlib
 import base64
-import rsa
+from RSA_Algorithm import *
+from Prime_Number_Generator import *
 
 
 ##Experimental
 #Generates public (e,n) and private (d,n) keys [128bit]
+'''
 def gen_key():
     (pubkey, privkey) = rsa.newkeys(128)
 
@@ -37,12 +39,16 @@ def gen_key():
     return keys
     #Instead of return directly interact with students class
     #Note, the keys returned are in hexadecimal
-
+'''
+def gen_key(bits):
+    gen_prime(bits)
+    keys = generate_key_with_custom_RSA_alogrithm(bits)
+    return keys
 
 #Message as string, e and n as str and in base 16
 def RSA_encode(message, e, n):
-    # Encoding each individual character
-    message_split = [(message[i:i+16]) for i in range(0, len(message), 16)] # Spliting str into list
+    # Encoding blocks of two character
+    message_split = list(message) # Spliting str into list
     message_split_bytes = []
     message_split_hex = []
     message_split_int = []
@@ -63,19 +69,10 @@ def RSA_encode(message, e, n):
         cipher_n = pow(i, e, n) # Put through function
         cipher.append(hex(cipher_n))
 
-    output = ""
-
-    for i in cipher:
-        output += i
-    
-    return output
+    return cipher
 
 
-def RSA_decode(cipher, d, n):
-    #converts hexadecimal to base 10
-    d = int(d, 16)
-    n = int(n, 16)
-
+def RSA_decode(cipher, d, n):   
     #lists that temp. store each step of cipher
     C = []
     N = []
@@ -104,7 +101,7 @@ def RSA_decode(cipher, d, n):
 
 #Test RSA_encode and RSA_decode with keys that are given in hexadecimal
 if __name__ == "__main__":
-    print(gen_key())
-    print(RSA_encode("wassup", '48055fe1', '6a1445eac29d8b07e5dcb688e3854993'))
+    # Key are generated using the RSA_Alogrithm
     ciphered_m = RSA_encode("wassup", '48055fe1', '6a1445eac29d8b07e5dcb688e3854993')
+    print(ciphered_m)
     print(RSA_decode(ciphered_m,'57d16f9acad8550584e78d0ca2f2e839','6a1445eac29d8b07e5dcb688e3854993'))

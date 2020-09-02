@@ -69,8 +69,9 @@ Save file Pickle:
     Description:
         Takes a given text and adds it to a given pickle file specified by filename.
      Syntax: 
-        saveFile(text, filenmae)
-        - both filename and text are to be given as string.
+        saveFile(text, filename)
+        - filename be given as string.
+        - text is given as any python variable type
         
 
 RSA_encode:

@@ -25,7 +25,6 @@ def loadingAnimation(redundantText, numberOfAnimationLoops, animatationText):
         
         for b in range(0, 4): # Code is repeated four times
             loadingStr += "." # An dot is added to the end of the string loading
-            
             if redundantText != None: # Checks that redundantText is not None
                 print(redundantText) # Prints the redundantText
             
@@ -43,16 +42,11 @@ def hashText(text):
     
 #Reads pickle file with a given name and returns whatever is stored
 def readFilePK(filename):
-    try:
-        pickle_in = open(str(filename),"rb")
-        message_get = pickle.load(pickle_in)
-        pickle_in.close()
-        return message_get
-    except:
-        print("Error 1\n For more information, please go to the Error_Documentation.txt file")
-        input("Press enter to dismiss")
-        
-        return "Error 1"
+    pickle_in = open(str(filename),"rb")
+    message_get = pickle.load(pickle_in)
+    pickle_in.close()
+    return message_get
+    # Don't need to catch an error as this will only used in the backend, plus it makes it easier to debug.
 
 
 #save given text to a pickle file of a given name
@@ -63,7 +57,7 @@ def saveFilePK(text, filename):
 
 
 #A time-saving method to quickly produce an interface for the user of this program
-def menuFunction(menuTitle, optionList):
+def menuFunction(menuTitle, optionList, listOfObjects):
     validInput = 0
     
     while validInput != 1:
@@ -80,6 +74,7 @@ def menuFunction(menuTitle, optionList):
         optionChoosen = input('Enter option: ')
         
         if optionChoosen == "99":
+            saveFilePK(listOfObjects,"studentData")
             exit()
         
         try:
