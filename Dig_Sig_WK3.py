@@ -20,7 +20,7 @@ def gen_signature(message, d, n):
     sign1 = signed_m[0:32]
     sign2 = signed_m[32:]
 
-    #final1 contains the hash function and some of the message
+    #final1 contains the hash function and some of the message; final2 contains the other part of the message
     #Encoding using asymmetric keys
     final1 = hex(pow(int(sign1, 16), d, n))
     final2 = hex(pow(int(sign2, 16), d, n))
@@ -34,42 +34,49 @@ def gen_signature(message, d, n):
     if len(final2) <32:
         final2 = final2.zfill(32)
 
+    #final signed combines the different parts of the message a
     final_signed = final1 + final2
-    return [final_signed, hashed_m]
 
-def check_signature(final_signed, e, n):
+    #Return the final signed message and the hashed message (to compare)
+    return [message, hashed_m, final_signed]
+
+def check_signature(message, final_signed, e, n):
     e = int(e, 16)
     n = int(n, 16)
 
     #Split into parts first.
-    part1 = final_signed[0:32]
-    part2 = final_signed[32:]
+    final1 = final_signed[0:32]
+    final2 = final_signed[32:]
 
     #Decodes parts   
-    D1 = hex(pow(int(part1, 16), e, n))
-    D2 = hex(pow(int(part2, 16), e, n))
+    D1 = hex(pow(int(final1, 16), e, n))
+    D2 = hex(pow(int(final2, 16), e, n))
 
     #Remove the 0x
     D1 = D1[2:]
     D2 = D2[2:]
 
-    #Takes the padding
+    #Takes the padding and prints it
     padding = bytes.fromhex(D1[0:16]).decode()
     print(f"padding = {padding}")
-    Hash = D1[16:] + D2
-    print(f"Hash from signed message: {Hash}")
+
+    #Takes the first 16 digits of the message 
+    M = message[0:16]
+    
+    #hashes the M using the padding recieved from the sender
+    #eval is used to str is treated as code.
+    hash_m = eval(f"hashlib.{padding}(M.encode()).hexdigest()")
+    return hash_m
 
 
 
 #Testing
 if __name__ == "__main__":
 
-    #Test gen_signature
+    #Test gen_signature using one message, d and n values
     print(gen_signature("hi", '4d87c9ba199f52ad3fbc88251ab44fff', '89c543ada411350b01c171a81f91ba1f'))
 
-    #Test check_signature
-    check_signature("47acf1e1a3bfb632101c21a8c7cc252c773396de83bbaf276e5719bce3c84845", '27ff', '89c543ada411350b01c171a81f91ba1f')
-    #There's something wrong with my message slicing since we are using a different hash function
-    #below is the 16 characters of the message that matches.
-    print(len("154013cb8140c753"))
+    #Test check_signature giving it an encoded message, e and n values
+    print(check_signature("hi","47acf1e1a3bfb632101c21a8c7cc252c773396de83bbaf276e5719bce3c84845", '27ff', '89c543ada411350b01c171a81f91ba1f'))
 
+    #If it works, the hash of the original function should match the hash of the recieved message using the padding.
