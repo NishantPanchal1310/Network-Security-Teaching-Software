@@ -67,7 +67,12 @@ def RSA_encode(message, e, n):
         cipher_n = pow(i, e, n) # Put through function
         cipher.append(hex(cipher_n))
 
-    return cipher
+    output = ""
+
+    for i in cipher:
+        output += i
+    
+    return output
 
 
 
