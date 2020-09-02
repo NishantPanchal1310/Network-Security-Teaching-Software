@@ -32,8 +32,7 @@ def loadingAnimation(redundantText, numberOfAnimationLoops, animatationText):
             print(loadingStr) # Prints the loading string
             sleep(0.7) # Sleeps for 0.7 seconds
             clearTerminal() # Clears the terminal
-           
-           
+                   
 #Hashes message with sha3_512      
 def hashText(text):
     byte_obj = (str(text)).encode()
@@ -105,3 +104,21 @@ if __name__ == "__main__":
     #Testing Hashing function
     text = "Test"
     print(hashText(text))
+    
+##IMPORTING FILES##
+def importFile():
+    print('File name entry rules: ')
+    print('Only txt files are supported')
+    print('DO NOT TYPE .txt, only enter the file name')
+
+    fileName = input('Enter file name: ') + '.txt'
+    
+    importedFile = open(fileName, 'r')
+    fileContent = importedFile.readlines()
+    importedFile.close()
+
+    return fileContent
+    ##PUT THIS OUTSIDE FUNCTION##
+    x = importFile()
+    print(x)
+
