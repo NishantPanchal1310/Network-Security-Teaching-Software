@@ -41,10 +41,6 @@ def gen_key():
 
 #Message as string, e and n as str and in base 16
 def RSA_encode(message, e, n):
-    #converts hexadecimal to base 10
-    e = int(e, 16)
-    n = int(n, 16)     
-
     # Encoding each individual character
     message_split = [(message[i:i+16]) for i in range(0, len(message), 16)] # Spliting str into list
     message_split_bytes = []
@@ -73,7 +69,6 @@ def RSA_encode(message, e, n):
         output += i
     
     return output
-
 
 
 def RSA_decode(cipher, d, n):
