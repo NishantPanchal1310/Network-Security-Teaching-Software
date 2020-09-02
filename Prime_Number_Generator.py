@@ -2,7 +2,7 @@ import math
 from Functions_Module import saveFilePK
 
 bits = 100
-while bits > 32:
+while bits != 16:
     bits = int(input("Enter amount bits of RSA keys: "))
 
 primes = []

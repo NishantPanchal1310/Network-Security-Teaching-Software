@@ -8,7 +8,7 @@ import time
 
 
 bits = 100
-while int(bits) > 32:
+while int(bits) != 16:
     bits = input("Enter amount bits of RSA keys: ")
 
 filename = "primes_" + str(bits) + "bits" 
