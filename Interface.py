@@ -151,15 +151,71 @@ if optionChosen == "2":
                 elif x > 0:
                     text += " " + content[x]
             
-            optionChosen = menuFunction("Who public key?", ["Mine", "Someone elses"],studentClassList)
+            optionChosen = menuFunction("Who's public key?", ["Mine", "Someone elses"],studentClassList)
             
             if optionChosen == "1":
                 print(RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
+               
+            if optionChosen == '2':
+                studentName == input('Enter student name: ')
+                
+                student = search_by_name(studentName,studentClassList)
+                print(RSA_encode(text, student.get_pubkey(), student.get_nValue()))
+                
+         if optionChosen == '2':
+            clearTerminal()
+            
+            
+            
+            
                 
             
+           
+        
+
+if optionChosen == "2":
+    e = input(' ')
+    d = input(' ')
+    n = input(' ')
+  
+    if optionChosen == '1':
+        M = input('Enter message: ')
+        optionChosen = menuFunction(None,['Print to Terminal','Export to File'])
+
+        if optionChosen == '1':
+            encoder = RSA_encode(M,e,n)
+            print(encoder)
+        
+        if optionChosen == '2':
+            output = RSA_encode(M,e,n)
             
+            print("File entry rules:")
+            print(" - ONLY .txt is supported") # For now!
+            print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+            outputFileName = input('Enter file name or path: ') + '.txt'           
+            outputFile = open(outputFileName, "w")
+            outputFile.write(output)
             
-            
+            outputFile.close()
+
+    if optionChosen == '2':
+        print("File entry rules:")
+        print(" - ONLY .txt is supported") # For now!
+        print(" - Do not enter the .txt at the end, otherwise you will get an error")
+        inputFileName = input('Enter file name: ') + ".txt"
+
+        inputFile = open(inputFileName, 'r')
+        content = inputFile.readlines()
+        inputFile.close()
+    
+        for x in range(0, len(content)):
+            if x == 0:
+                text = content[x]
+            elif x > 0:
+                text += " " + content[x]
+
+        RSA_encode(content,e,n)            
             
             
             
