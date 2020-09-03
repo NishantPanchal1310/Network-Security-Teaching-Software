@@ -108,6 +108,7 @@ def RSA_decode(cipher, d, n):
 
 
 #Test RSA_encode and RSA_decode with keys that are given in hexadecimal
+#NOTE: DUE TO CHANGES IN CODE THIS TESTING FUNCTION NEEDS TO CONVERT KEYS INTO BASE10 BEFOREHAND.
 if __name__ == "__main__":
     # Key are generated using the RSA_Alogrithm
     ciphered_m = RSA_encode("wassup", '48055fe1', '6a1445eac29d8b07e5dcb688e3854993')
