@@ -1,11 +1,13 @@
 import hashlib
 import base64
+import rsa
 from RSA_Algorithm import *
 from Prime_Number_Generator import *
 
 
-##Experimental
+
 #Generates public (e,n) and private (d,n) keys [128bit]
+#Alternate approach but relies on the use of rsa import.
 '''
 def gen_key():
     (pubkey, privkey) = rsa.newkeys(128)
@@ -40,6 +42,7 @@ def gen_key():
     #Instead of return directly interact with students class
     #Note, the keys returned are in hexadecimal
 '''
+#A small function to generate keys from the custom RSA algorithm
 def gen_key(bits):
     gen_prime(bits)
     keys = generate_key_with_custom_RSA_alogrithm(bits)
@@ -72,6 +75,7 @@ def RSA_encode(message, e, n):
     return cipher
 
 
+#Decodes the cipher when given d and n. d and n are given as decimal. The cipher is the string.
 def RSA_decode(cipher, d, n):   
     #lists that temp. store each step of cipher
     C = []
