@@ -5,6 +5,7 @@ from Student_class import *
 studentClassList = open_student_database()  
 
 ### Welcome screen
+#Need to comment everything here, will not be commented at all in the function documentation.
 #------------------------------------------------------------------------#
 
 # loadingAnimation("Welcome to Network Security Teaching Software", 2, "Loading")
