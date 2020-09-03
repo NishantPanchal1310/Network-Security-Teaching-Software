@@ -24,11 +24,11 @@ class students():
     
     # These methods can edit the values for keys.
     def edit_pubkey(self, new_key):
-        self.pubkey = new_key
+        self.pubkey = int(new_key)
     def edit_privkey(self, new_key):
-        self.privkey = new_key
+        self.privkey = int(new_key)
     def edit_nValue(self, new_key):
-        self.nValue = new_key
+        self.nValue = int(new_key)
 
 # function is used to create a new student.
 def new_student(name, e, d, n):
