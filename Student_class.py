@@ -7,9 +7,9 @@ from Functions_Module_WK1 import *
 class students():
     def __init__(self, name, pubkey, privkey, n):
         self.name = name
-        self.pubkey = pubkey
-        self.privkey = privkey
-        self.nValue = n
+        self.pubkey = int(pubkey)
+        self.privkey = int(privkey)
+        self.nValue = int(n)
     
     
    # These methods return the respective values as given in the name
