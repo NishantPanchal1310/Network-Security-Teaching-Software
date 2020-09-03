@@ -1,6 +1,4 @@
-
-Deliverables
-
+REQUIREMENTS
     Software fully documented and written in Python 3.
     Technical documentation, including installation instructions, libraries used,  and UML class diagrams.
     Details about what testing was done and what data was used.
@@ -11,6 +9,7 @@ Week 1 (Aug 24th): Develop a program to read text from the terminal and a file, 
 Implementing RSA:
 https://pypi.org/project/rsa/ 
 
+#######               FUNCTIONS             ###############################
 Clear Terminal Function
     Description:
         Clear all prints on the terminal.
@@ -76,24 +75,79 @@ Save file Pickle:
 
 RSA_encode:
     Description:
-        takes a message to encode, the e value of a public key, the n value of the public and private keys and returns it in the form of hexadecimal.
+        takes a message to encode, the e value of a public key, the n value of the public and private 
+        keys and returns it in the form of hexadecimal.
      syntax: 
          RSA_encode(message, e, n)
         - message in string
-        - e and n need to be str and in base 16.
+        - e and n need to be str and in base 10.
      
      
 RSA_decode:
     Description:
-        takes a ciphered message, d and n of the private key, and then deciphers the message using the RSA algorithm and returns it as string
+        takes a ciphered message, d and n of the private key, and then deciphers the message using the 
+        RSA algorithm and returns it as string
      syntax: 
         RSA_decode(cipher, d, n)
-        - cipher needs to be in str, in base 16 (preferably use an encoded cipher from RSA_encode function).
-        - d and n need to be str and in base 16.
-        
-        
-##Experimental: still looking for method to implement rsa outside of installing it through cmd.
+        - cipher needs to be in str, in base 16 (preferably use an encoded cipher from RSA_encode 
+        function).
+        - d and n need to be str and in base 10.
+       
 
+Menu Function:
+    Description:
+        A function to produce an interface which a user can ointeract with. 
+        Normally, the user will not interact with this function as it is coded in into the main     interface.  
+    syntax: 
+        - menuTitle needs to be a string, 
+        - optionList needs to be a list,
+        - list of Objects needs to be a list of student objects instantiated from student class.
+        
+importFile function:
+    description: 
+        A function that takes txt files, opens them, reads them (as a list) and then closes the file
+        The content within the file is returned as a list. 
+    syntax: 
+        -  user input
+        - must be given as a str
+        - the name of the file must be given as the name excluding txt, for example. "test" and not 
+        "test.txt".
+        
+new_student function:
+    description:
+        It is a function which creates a new student class and assigns the attributes. To be used in 
+        the main interface.
+    syntax:
+        -   name, e, d and n are given as str but e, d, and n are stored as int.
+        
+open_student_database:
+    Description:
+        It will oben a file called "StudentData" containing all of the student objects. 
+        it will then read the contents and return it as a list.
+    syntax:
+        - No input is required for the function.
+
+save_student_database:
+    Description:
+        Once changes have been made to the list of objects with student objects, this is considered
+        the database and is saved back into the StudentData pickle file.
+    Syntax:
+     -listOfObjects must be the list that stores all of teh student objects.
+ 
+ search_by_name:
+    Description:
+        This will be used to search for a student in the listOfObjects
+        It is done by looking for a desired name attribute of every object in the list
+        Quite inefficient and could possibly change over to a dictionary if needed.
+    syntax: 
+        - name must be given as a string, exactly as the name of the student object which was 
+        instantiated.
+        -listOfObjects is the temporary database of all the student objects when the interface is run.
+        
+        
+##### KEY GENERATION FOR RSA #########################################################
+
+###Backup/unused:###
 gen_key:
     Description:
         using installed module rsa, generates a public (e,n) and private (d,n) key in 128 bit and returns it as string of hexadecimal 
@@ -102,9 +156,45 @@ gen_key:
         No input required.
         returns a string labeling which keys are which [in hexadecimal]
         Possibly implement as method or interdependence of Student() class.
-
-     
- 
- 
+#################     
         
-                
+gen_prime function:
+    Description:
+        A function that generates a list of prime numbers.
+        It then saves a list of the prime numbers generated to a file named as 
+        primes_<number of bits>bits, which is to be used when generating RSA keys.
+    syntax: 
+        - bits is to be given as an integer in base 10. 
+        - it determines how many bits the prime numbers will have, by taking 2 to the power of bits 
+          subtracting 1 and divded by 2. 2^((bits-1)/2)
+        
+ generate_key_with_custom_RSA_algorithm:
+    Description:
+        A function that generates keys manually using the file of prime numbers produced by the  
+        gen_prime function. It uses the maths behind the RSA algorithm and applies it and returns
+        the e, n and d values.
+    Syntax: 
+        - bits is given as int, but it will only be used to read the file which the prime numbers 
+          are stored in.
+        - It will return e, d and n as a tuple.
+    
+    
+
+
+
+
+
+
+########   Classes    ##########
+
+students():
+    Description:
+        A class which is used to instantiated student objects for storing keys, messages, ect.
+    Attributes:
+        name: str  pubkey: int(10)   privkey: int(10)  n: int(10)
+        name is used to describe which object belongs to a user.
+        the other attributes are used for RSA 
+    Methods:
+        - get_ methods: descriptor that follows get_ denotes the values which are returned.
+        - edit_ methods: descriptor that follows edit_ denotes the keys which can be edited. Note that  
+            new_key has to be given as an str which is stored as an int in base 10.
