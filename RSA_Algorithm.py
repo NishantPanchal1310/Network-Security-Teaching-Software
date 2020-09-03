@@ -6,24 +6,33 @@ from math import gcd
 from Functions_Module_WK1 import readFilePK
 import time
 
+#Algorithm to generate keys manually using prime numbers
 def generate_key_with_custom_RSA_alogrithm(bits):
+    
+    #opens and reads a file containing all of the prime numbers.
     filename = "primes_" + str(bits) + "bits" 
-
     primeNumberList = readFilePK(filename)
+<<<<<<< HEAD
 
     # Random prime numbers from prime file
     p = random.choice(primeNumberList)
     q = random.choice(primeNumberList)
 
     # gets the n value
+=======
+    
+    #takes p and q which are used to construct the keys from the file with prime numbers
+    p = random.choice(primeNumberList)
+    q = random.choice(primeNumberList)
+
+    #Set up the variables to be used in the key generation.
+>>>>>>> 628a233996fb46692824cbab7fe34ff36a068a59
     n = p*q
-
     PhiFunction = (p-1)*(q-1)
-
     conditionValues = []
-
     eValues = []
-
+    
+    #generating the possible values for e.
     for t in range(2, PhiFunction + 1):
         conditionValues.append(t)
         
@@ -31,18 +40,24 @@ def generate_key_with_custom_RSA_alogrithm(bits):
         if (gcd(n, values) == 1) and (gcd(PhiFunction, values) == 1):
             eValues.append(values)
         
+<<<<<<< HEAD
     # Choices a random e value from eValues list
+=======
+    #Assigns a random of e from a list of possible e values.
+>>>>>>> 628a233996fb46692824cbab7fe34ff36a068a59
     e = random.choice(eValues)
 
 
     randomNumber = random.randrange(0, 10)
+    
 
     for u in range(1, PhiFunction + 1):
         if (e*u)%PhiFunction == 1:
             nthNumber = u
             break
-
+ 
     d = randomNumber*PhiFunction + nthNumber
     
+    #Return keys as tuple: (e,d,n)
     return e, d, n
 

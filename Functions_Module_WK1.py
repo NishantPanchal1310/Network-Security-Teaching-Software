@@ -60,6 +60,7 @@ def saveFilePK(text, filename):
 def menuFunction(menuTitle, optionList, listOfObjects):
     validInput = 0
     
+
     while validInput != 1:
         clearTerminal()
         
@@ -102,6 +103,7 @@ if __name__ == "__main__":
     
 ##IMPORTING FILES##
 def importFile():
+   
     print('File name entry rules: ')
     print('Only txt files are supported')
     print('DO NOT TYPE .txt, only enter the file name')
