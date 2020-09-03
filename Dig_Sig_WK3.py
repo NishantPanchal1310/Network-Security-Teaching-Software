@@ -1,8 +1,10 @@
 ##Sprint Week 3: Digital Signatures
 #need to revise, some errors present.
+#Yet to make it such that it processes each individual letter instead of a long string of text.
 
 import hashlib
 
+#A function to take a message and add a signature.
 def gen_signature(message, d, n):
     #convert to dec
     d = int(d, 16)
