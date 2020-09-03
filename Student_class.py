@@ -42,6 +42,6 @@ def save_student_database(listOfObjects):
     
 def search_by_name(name, listOfObjects):
     for objects in listOfObjects:
-        if objects.name == "name":
+        if objects.get_name() == name:
             return objects
         
