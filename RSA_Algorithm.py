@@ -11,9 +11,11 @@ def generate_key_with_custom_RSA_alogrithm(bits):
 
     primeNumberList = readFilePK(filename)
 
+    # Random prime numbers from prime file
     p = random.choice(primeNumberList)
     q = random.choice(primeNumberList)
 
+    # gets the n value
     n = p*q
 
     PhiFunction = (p-1)*(q-1)
@@ -29,8 +31,9 @@ def generate_key_with_custom_RSA_alogrithm(bits):
         if (gcd(n, values) == 1) and (gcd(PhiFunction, values) == 1):
             eValues.append(values)
         
-
+    # Choices a random e value from eValues list
     e = random.choice(eValues)
+
 
     randomNumber = random.randrange(0, 10)
 

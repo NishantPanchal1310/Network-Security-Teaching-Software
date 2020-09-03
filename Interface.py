@@ -36,7 +36,7 @@ elif optionChosen == "2":
             exist = False
         
     print("Creating Keys")
-    new_keys = gen_key(16)
+    new_keys = gen_key(24)
     
     studentClassList.append(new_student(student_name, new_keys[0], new_keys[1], new_keys[2]))
     student_number = len(studentClassList) - 1
@@ -120,7 +120,7 @@ if optionChosen == "1":
         if optionChosen == "2":
             print(f"Hashed text is: {output}")
         
-### 
+### RSA
 #------------------------------------------------------------------------#       
         
 if optionChosen == "2":

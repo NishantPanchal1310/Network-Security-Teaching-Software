@@ -41,7 +41,10 @@ def save_student_database(listOfObjects):
     saveFilePK(listOfObjects,"studentData")
     
 def search_by_name(name, listOfObjects):
+    x = []
     for objects in listOfObjects:
         if objects.name == "name":
-            return objects
+            return x.append(objects)
+    
+    return x
         
