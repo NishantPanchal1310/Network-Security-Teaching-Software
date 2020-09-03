@@ -6,6 +6,7 @@ from math import gcd
 from Functions_Module_WK1 import readFilePK
 import time
 
+#Algorithm to generate keys manually using prime numbers
 def generate_key_with_custom_RSA_alogrithm(bits):
     filename = "primes_" + str(bits) + "bits" 
 
