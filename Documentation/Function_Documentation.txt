@@ -4,7 +4,7 @@ REQUIREMENTS
     Details about what testing was done and what data was used.
     Your group will be required to deliver a 10 minute demonstration of your software, its functionality and how you can use it to perform the given tasks.
     
-Week 1 (Aug 24th): Develop a program to read text from the terminal and a file, to hash this text and store the hash as a hexadecimal in a file.
+UML diagram link: 
 
 Implementing RSA:
 https://pypi.org/project/rsa/ 
