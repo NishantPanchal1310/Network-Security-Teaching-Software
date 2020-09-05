@@ -1,0 +1,19 @@
+###Libraries used###
+ - Hashlib
+ - base64
+ - pickle
+ - time
+ - os
+ - math
+ - random
+ - rsa (requires installation through pip install rsa in terminal)
+ 
+ 
+###Installation instructions###
+For using inbuilt python RSA:
+1. Go to terminal/command prompt.
+2. type "pip install rsa" and press enter
+3. as long as a file using it has "import rsa" it will work.
+For this Network Security Software, triple quotes (''') in file "RSA_module_WK2.py" must be removed.
+
+For main interface and software:
