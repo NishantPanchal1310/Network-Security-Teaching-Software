@@ -1,6 +1,7 @@
 ##Sprint Week 3: Digital Signatures
 #need to revise, some errors present.
-#Yet to make it such that it processes each individual letter instead of a long string of text.
+#Yet to make it such that it processes each individual letter instead of a long string of text. Is this necessary? I understand that creating the keys requires effort of separately
+#encoding the letters of a message, but all this is doing is running the already made keys through a pow() function, so why even bother???
 
 import hashlib
 
