@@ -5,11 +5,11 @@ from Functions_Module_WK1 import *
 
 #Class for students is generated in order to use it for storing keys.
 class students():
-    def __init__(self, name = "", pubkey, privkey, n ):
+    def __init__(self, name = "", pubkey, privkey, nValue):
         self.name = name
         self.pubkey = int(pubkey)
         self.privkey = int(privkey)
-        self.nValue = int(n)
+        self.nValue = int(nValue)
     
     
    # These methods return the respective values as given in the name
