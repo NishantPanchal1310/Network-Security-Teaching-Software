@@ -165,6 +165,8 @@ if optionChosen == "2":
                 
          if optionChosen == '2':
             clearTerminal()
+            text = input('Enter text to encode: ')
+            RSA_encode(text, student.get_pubkey(),student.get_nValue())
             
             
             
