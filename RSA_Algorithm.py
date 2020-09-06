@@ -61,3 +61,5 @@ def generate_key_with_custom_RSA_alogrithm(bits):
     #Return keys as tuple: (e,d,n)
     return e, d, n
 
+if __name__ == "__main__":
+    generate_key_with_custom_RSA_alogrithm(16)
