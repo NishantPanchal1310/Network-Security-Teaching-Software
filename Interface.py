@@ -192,6 +192,10 @@ if optionChosen == "2":
                 RSA_encode(text, student.get_pubkey(),student.get_nValue())
                 
     if optionChosen == "2":
+        optionChosen = menuFunction("Encrypt message", ["From file", "From terminal input"], studentClassList)
+            
+            if optionChosen == '1':
+                
             
             
             
