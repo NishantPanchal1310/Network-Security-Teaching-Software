@@ -7,9 +7,10 @@ import hashlib
 
 #A function to take a message and add a signature.
 def gen_signature(message, d, n):
-    #convert to dec
-    d = int(d, 16)
-    n = int(n, 16)
+    #convert to int
+    #convert to int
+    d = int(d)
+    n = int(n)
     message = str(message)
 
     #Take first 16 characters of message:
@@ -44,8 +45,9 @@ def gen_signature(message, d, n):
     return [message, hashed_m, final_signed]
 
 def check_signature(message, final_signed, e, n):
-    e = int(e, 16)
-    n = int(n, 16)
+    #Make sure it is an integer
+    e = int(e)
+    n = int(n)
 
     #Split into parts first.
     final1 = final_signed[0:32]
