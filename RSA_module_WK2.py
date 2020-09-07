@@ -9,7 +9,7 @@ from Prime_Number_Generator import *
 #Generates public (e,n) and private (d,n) keys [128bit]
 #Alternate approach but relies on the use of rsa import.
 def gen_key():
-    (pubkey, privkey) = rsa.newkeys(128)
+    (pubkey, privkey) = rsa.newkeys(512)
 
     #converts public key into string
     public_tuple = str(pubkey)
@@ -29,17 +29,11 @@ def gen_key():
     n_key = int(pub_key[0])
     d_key = int(priv_key[2])
     e_key = int(pub_key[1])
-    
-    #convert int to hex
-    n_key = hex(n_key)
-    d_key = hex(d_key)
-    e_key = hex(e_key)
 
-    #keys are given as [<public key>] - have to modify to return as int not str, purely testing.
-    keys = "n: " + str(n_key) + "\nd: " + str(d_key) + "\ne value: " + str(e_key)
+    #keys are returned as [n, d, e] in decimal
+    keys = [n_key, d_key, e_key]
     return keys
     #Instead of return directly interact with students class
-    #Note, the keys returned are in hexadecimal
 # Generates keys
 '''
 def gen_key(bits):
@@ -47,11 +41,10 @@ def gen_key(bits):
     keys = generate_key_with_custom_RSA_alogrithm(bits)
     return keys # Can be treated as a list
 '''
-
-#Message as string, e and n as str and in base 16
+#Message as string, e and n as str and in base 10
 def RSA_encode(message, e, n):
     # Encoding blocks of two character
-    message_split = list(message) # Spliting str into list
+    message_split = [message[i:i+50] for i in range(0, len(message), 50)]# Spliting str into list
     message_split_bytes = []
     message_split_hex = []
     message_split_int = []
@@ -69,7 +62,7 @@ def RSA_encode(message, e, n):
     cipher = []
 
     for i in message_split_int:
-        cipher_n = pow(i, e, n) # Put through function
+        cipher_n = pow(i, int(e), int(n)) # Put through function
         cipher.append(hex(cipher_n))
 
     return cipher
@@ -85,10 +78,10 @@ def RSA_decode(cipher, d, n):
     decoded_message = []
 
     for i in cipher:
-        C.append(int(i, 16)) # Convert to number
+        C.append(int(i[2:], 16)) # Convert to number
         
     for i in C:
-        N.append(pow(i, d, n)) # Reverse through function
+        N.append(pow(i, int(d), int(n))) # Reverse through function
 
     for i in N:
         decoding_message_hex.append(hex(i)) # Convert N to hexidecimal
@@ -104,9 +97,10 @@ def RSA_decode(cipher, d, n):
 
 
 #Test RSA_encode and RSA_decode with keys that are given in hexadecimal
-#NOTE: DUE TO CHANGES IN CODE THIS TESTING FUNCTION NEEDS TO CONVERT KEYS INTO BASE10 BEFOREHAND.
+#Testing is 128bit keys so it is easy to follow
 if __name__ == "__main__":
     # Key are generated using the RSA_Alogrithm
-    ciphered_m = RSA_encode("wassup", '48055fe1', '6a1445eac29d8b07e5dcb688e3854993')
+    print(gen_key())
+    ciphered_m = RSA_encode("wassup", "65537", "173063978907173071241342391096850925381")
     print(ciphered_m)
-    print(RSA_decode(ciphered_m,'57d16f9acad8550584e78d0ca2f2e839','6a1445eac29d8b07e5dcb688e3854993'))
+    print(RSA_decode(ciphered_m, "155249773165259502585672232200778849889","173063978907173071241342391096850925381"))
