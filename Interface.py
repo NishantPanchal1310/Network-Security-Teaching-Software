@@ -165,9 +165,19 @@ if optionChosen == "2":
                 
          if optionChosen == '2':
             clearTerminal()
+            optionChosen = menuFunction("Who's public key?", ["Mine", "Someone elses"],studentClassList)
             text = input('Enter text to encode: ')
-            RSA_encode(text, student.get_pubkey(),student.get_nValue())
             
+            
+            if optionChosen == "1":
+                 print(RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
+                
+            if optionChosen == '2':
+                studentName == input('Enter student name: ')
+                student = search_by_name(studentName,studentClassList)
+                RSA_encode(text, student.get_pubkey(),student.get_nValue())
+                
+    if optionChosen == "2":
             
             
             
