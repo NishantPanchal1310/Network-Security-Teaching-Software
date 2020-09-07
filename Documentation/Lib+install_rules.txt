@@ -10,10 +10,6 @@
  
  
 ###Installation instructions###
-For using inbuilt python RSA:
-1. Go to terminal/command prompt.
-2. type "pip install rsa" and press enter
-3. as long as a file using it has "import rsa" it will work.
-For this Network Security Software, triple quotes (''') in file "RSA_module_WK2.py" must be removed.
+Run the setup.bat file
 
 For main interface and software:
