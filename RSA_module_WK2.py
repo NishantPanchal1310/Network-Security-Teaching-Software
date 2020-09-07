@@ -8,7 +8,6 @@ from Prime_Number_Generator import *
 
 #Generates public (e,n) and private (d,n) keys [128bit]
 #Alternate approach but relies on the use of rsa import.
-'''
 def gen_key():
     (pubkey, privkey) = rsa.newkeys(128)
 
@@ -41,7 +40,6 @@ def gen_key():
     return keys
     #Instead of return directly interact with students class
     #Note, the keys returned are in hexadecimal
-'''
 <<<<<<< HEAD
 # Generates keys
 =======
