@@ -155,8 +155,22 @@ if optionChosen == "2":
             optionChosen = menuFunction("Who's public key?", ["Mine", "Someone elses"],studentClassList)
             
             if optionChosen == "1":
-                print(RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
-               
+                optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
+                
+                if optionChosen == '1':
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+                    output = RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue())
+                    outputFileName = input("Enter filename or path: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
+                    
+                if optionChosen == '2':
+                    print(RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
+                    
+                    
             if optionChosen == '2':
                 studentName == input('Enter student name: ')
                 
@@ -166,7 +180,7 @@ if optionChosen == "2":
          if optionChosen == '2':
             clearTerminal()
             optionChosen = menuFunction("Who's public key?", ["Mine", "Someone elses"],studentClassList)
-            text = input('Enter text to encode: ')
+            text = input('Enter text: ')
             
             
             if optionChosen == "1":
@@ -178,6 +192,10 @@ if optionChosen == "2":
                 RSA_encode(text, student.get_pubkey(),student.get_nValue())
                 
     if optionChosen == "2":
+        optionChosen = menuFunction("Encrypt message", ["From file", "From terminal input"], studentClassList)
+            
+            if optionChosen == '1':
+                
             
             
             
