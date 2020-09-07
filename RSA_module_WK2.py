@@ -40,15 +40,13 @@ def gen_key():
     return keys
     #Instead of return directly interact with students class
     #Note, the keys returned are in hexadecimal
-<<<<<<< HEAD
 # Generates keys
-=======
-#A small function to generate keys from the custom RSA algorithm
->>>>>>> 628a233996fb46692824cbab7fe34ff36a068a59
+'''
 def gen_key(bits):
     gen_prime(bits)
     keys = generate_key_with_custom_RSA_alogrithm(bits)
     return keys # Can be treated as a list
+'''
 
 #Message as string, e and n as str and in base 16
 def RSA_encode(message, e, n):
