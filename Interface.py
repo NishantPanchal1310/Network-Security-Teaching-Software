@@ -1,6 +1,7 @@
 from Functions_Module_WK1 import *
 from RSA_module_WK2 import *
 from Student_class import *
+from Dig_Sig_WK3 import *
 
 studentClassList = open_student_database()  
 
@@ -197,13 +198,54 @@ if optionChosen == "2":
             #if optionChosen == '1':
                 
             
+### Digital Signature
+#------------------------------------------------------------------------#   
             
-            
-                
-            
-           
+if optionChosen == "3":
+    optionChosen = menuFunction["Digital Signture", ["Signing Message", "Verifying Message"], studentClassList]
+    
+    if optionChosen == "1":
+        optionChosen = menuFunction("Encrypt message", ["From file", "From terminal input"], studentClassList)
         
-
+        if optionChosen == "1":
+            clearTerminal()
+            
+            print("File entry rules:")
+            print(" - ONLY txt is supported") # For now!
+            print(" - Do not enter the .txt at the end, otherwise you will get an error")
+            
+            inputFileName = input("Enter filename or path: ") + ".txt"
+            
+            inputFile = open(inputFileName, "r")
+            
+            content = inputFile.readlines()
+            
+            inputFile.close()
+            
+            for x in range(0, len(content)):
+                if x == 0:
+                    text = content[x]
+                elif x > 0:
+                    text += " " + content[x]
+            
+            output = gen_signature(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue)
+            
+            optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
+            
+            if optionChosen == "1":
+                print("File entry rules:")
+                print(" - ONLY txt is supported") # For now!
+                print(" - Do not enter the .txt at the end, otherwise you will get an error")
+                output = RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue())
+                outputFileName = input("Enter filename or path: ") + ".txt"
+                outputFile = open(outputFileName, "w")
+                outputFile.write(output)
+                outputFile.close()
+            
+            if optionChosen == "2":
+                print(f"The signed messsge is:\n{output}")
+        
+        if optionChosen
         
             
             
