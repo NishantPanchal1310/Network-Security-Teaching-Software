@@ -272,7 +272,7 @@ if optionChosen == "3":
             if optionChosen == "2":
                 print(f"The signed messsge is:\n{output}")
         
-        if optionChosen
+        #if optionChosen
         
             
             
