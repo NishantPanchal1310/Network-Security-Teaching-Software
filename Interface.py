@@ -177,7 +177,7 @@ if optionChosen == "2":
                 student = search_by_name(studentName,studentClassList)
                 print(RSA_encode(text, student.get_pubkey(), student.get_nValue()))
                 
-         if optionChosen == '2':
+        if optionChosen == '2':
             clearTerminal()
             optionChosen = menuFunction("Who's public key?", ["Mine", "Someone elses"],studentClassList)
             text = input('Enter text: ')
@@ -194,7 +194,7 @@ if optionChosen == "2":
     if optionChosen == "2":
         optionChosen = menuFunction("Encrypt message", ["From file", "From terminal input"], studentClassList)
             
-            if optionChosen == '1':
+            #if optionChosen == '1':
                 
             
             
@@ -214,7 +214,7 @@ if optionChosen == "2":
             
             
             
-            '''
+'''
             optionChosen = menuFunction(None, ["Output to file", "Output to terminal"], studentClassList)
             
             if optionChosen == "1":
