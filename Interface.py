@@ -193,11 +193,9 @@ if optionChosen == "2":
                 RSA_encode(text, student.get_pubkey(),student.get_nValue())
                 
     if optionChosen == "2":
-<<<<<<< HEAD
         optionChosen = menuFunction("Encrypt message", ["From file", "From terminal input"], studentClassList)
             
             #if optionChosen == '1':
-=======
         optionChosen = menuFunction("Decrypt", ["From file", "From terminal input"], studentClassList)
 
         if optionChosen == '1':
@@ -225,7 +223,6 @@ if optionChosen == "2":
         
                 
                
->>>>>>> 0fe9200f4a1656829ed6cc070aff6984ef1b0b68
                 
             
 ### Digital Signature
