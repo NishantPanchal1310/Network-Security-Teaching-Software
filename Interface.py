@@ -199,7 +199,7 @@ if optionChosen == "2":
         optionChosen = menuFunction("Decrypt", ["From file", "From terminal input"], studentClassList)
 
         if optionChosen == '1':
-        clearTerminal()
+            clearTerminal()
 
             print("File entry rules:")
             print(" - ONLY txt is supported") # For now!
