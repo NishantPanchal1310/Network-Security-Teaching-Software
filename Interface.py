@@ -192,9 +192,33 @@ if optionChosen == "2":
                 RSA_encode(text, student.get_pubkey(),student.get_nValue())
                 
     if optionChosen == "2":
-        optionChosen = menuFunction("Encrypt message", ["From file", "From terminal input"], studentClassList)
-            
-            if optionChosen == '1':
+        optionChosen = menuFunction("Decrypt", ["From file", "From terminal input"], studentClassList)
+
+        if optionChosen == '1':
+        clearTerminal()
+
+            print("File entry rules:")
+            print(" - ONLY txt is supported") # For now!
+            print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+            inputFileName = input("Enter filename or path: ") + ".txt"
+
+            inputFile = open(inputFileName, "r")
+
+            content = inputFile.readlines()
+
+            inputFile.close()
+
+            for x in range(0, len(content)):
+                if x == 0:
+                    text = content[x]
+                elif x > 0:
+                    text += " " + content[x]
+
+            optionChosen = menuFunction("Who's RSA key?", ["Your private key", "Someone else's public key"],studentClassList)
+        
+                
+               
                 
             
             
