@@ -172,7 +172,7 @@ if optionChosen == "2":
                     
                     
             if optionChosen == '2':
-                studentName == input('Enter student name: ')
+                studentName = input('Enter student name: ')
                 
                 student = search_by_name(studentName,studentClassList)
                 print(RSA_encode(text, student.get_pubkey(), student.get_nValue()))
@@ -187,7 +187,7 @@ if optionChosen == "2":
                  print(RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
                 
             if optionChosen == '2':
-                studentName == input('Enter student name: ')
+                studentName = input('Enter student name: ')
                 student = search_by_name(studentName,studentClassList)
                 RSA_encode(text, student.get_pubkey(),student.get_nValue())
                 
@@ -234,7 +234,7 @@ if optionChosen == "2":
                     print(RSA_decode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
                 
             if optionChosen == '2':
-                studentName == input('Enter student name: ')
+                studentName = input('Enter student name: ')
                 student = search_by_name(studentName,studentClassList)
                 optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
                 
