@@ -1,3 +1,4 @@
+
 ##Sprint Week 3: Digital Signatures
 #need to revise, some errors present.
 #Yet to make it such that it processes each individual letter instead of a long string of text. Is this necessary? I understand that creating the keys requires effort of separately
@@ -20,67 +21,76 @@ def gen_signature(message, d, n):
     #make signed message:
     signed_m = b"sha3_512".hex() + hashed_m
 
-    #split message
-    sign1 = signed_m[0:32]
-    sign2 = signed_m[32:]
+    #split message and only take first 64 digits of hash
+    signed_list =  [signed_m[i:i+32] for i in range(0, len(signed_m), 32)]
 
     #final1 contains the hash function and some of the message; final2 contains the other part of the message
     #Encoding using asymmetric keys
-    final1 = hex(pow(int(sign1, 16), d, n))
-    final2 = hex(pow(int(sign2, 16), d, n))
-
-    #remove the 0x in front:
-    final1 = final1[2:]
-    if len(final1) <32:
-        final1 = final1.zfill(32)
-
-    final2 = final2[2:]
-    if len(final2) <32:
-        final2 = final2.zfill(32)
+    final_list = []
+    for i in signed_list:
+        i = hex(pow(int(i, 16), d, n))
+        i = i[2:]
+        final_list.append(i)
 
     #final signed combines the different parts of the message a
-    final_signed = final1 + final2
+    final_signed = "".join(final_list)
+
+    output = message + "0x" + final_signed
 
     #Return the final signed message and the hashed message (to compare)
-    return [message, hashed_m, final_signed]
+    return output
 
-def check_signature(message, final_signed, e, n):
+def check_signature(output, e, n):
+    #split incoming signature into message and signed message, and assign to respective variables
+    output = output.split("0x")
+    message = output[0]
+    final_signed = output[1]
+
+
     #Make sure it is an integer
     e = int(e)
     n = int(n)
 
     #Split into parts first.
-    final1 = final_signed[0:32]
-    final2 = final_signed[32:]
+    final_signed_list = [final_signed[i:i+32] for i in range(0, len(final_signed), 32)]
 
-    #Decodes parts   
-    D1 = hex(pow(int(final1, 16), e, n))
-    D2 = hex(pow(int(final2, 16), e, n))
+    #Decodes parts 
+    decode_message_list = []
+    for i in final_signed_list:
+        i = hex(pow(int(i, 16), e, n))
+        i = i[2:]
+        decode_message_list.append(i)
 
-    #Remove the 0x
-    D1 = D1[2:]
-    D2 = D2[2:]
-
+    D1 = decode_message_list[0]
+ 
+        
     #Takes the padding and prints it
     padding = bytes.fromhex(D1[0:16]).decode()
     print(f"padding = {padding}")
 
     #Takes the first 16 digits of the message 
     M = message[0:16]
-    
+
     #hashes the M using the padding recieved from the sender
     #eval is used to str is treated as code.
     hash_m = eval(f"hashlib.{padding}(M.encode()).hexdigest()")
+
+    #To compare:
+    check_message = "".join(decode_message_list)
+    print(check_message[16:])
+
     return hash_m
+
 
 
 #Testing
 if __name__ == "__main__":
 
     #Test gen_signature using one message, d and n values
-    print(gen_signature("hi", '4d87c9ba199f52ad3fbc88251ab44fff', '89c543ada411350b01c171a81f91ba1f'))
+    output = gen_signature("hi", '103055607260039020463150134675226513407', '183128490582356739098389207284479801887')
+    print(output)
 
     #Test check_signature giving it an encoded message, e and n values
-    print(check_signature("hi","47acf1e1a3bfb632101c21a8c7cc252c773396de83bbaf276e5719bce3c84845", '27ff', '89c543ada411350b01c171a81f91ba1f'))
-
-    #If it works, the hash of the original function should match the hash of the recieved message using the padding.
+    #Some weird bug where the 2 element in list is different but the rest matches???
+    print(check_signature(output, '10239', '183128490582356739098389207284479801887'))
+    
