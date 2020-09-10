@@ -1,6 +1,6 @@
 ### Version Info
 # Version: SW 1
-# Build Number: 1.0
+# Build Number: 2.2 (final)
 #------------------------------------------------------------------------#
 
 import hashlib
@@ -105,9 +105,6 @@ def importFile():
     importedFile.close()
 
     return fileContent
-    ##PUT THIS OUTSIDE FUNCTION##
-    x = importFile()
-    print(x)
 
 ##TESTING FUNCTIONS##        
 if __name__ == "__main__":
@@ -133,4 +130,9 @@ if __name__ == "__main__":
     #Testing Hashing function
     text = "Test"
     print(hashText(text))
+                     
+    ##test importing from txt##
+    x = importFile()
+    print(x)
+
     
