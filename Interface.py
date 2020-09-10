@@ -292,8 +292,88 @@ if optionChosen == "2":
                 
                 if optionChosen == '2':
                     print(RSA_decode(text, studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
+                    
+
+
                 
+### SIGNATURES ###
+if optionChosen == '3':
+    clearTerminal()
+    optionChosen = menuFunction("Digital Signatures", ["Generate Signature", "Check Signature"],studentClassList)
+    if optionChosen == '1':
+        clearTerminal()
+        optionChosen = menuFunction('Format', ['From File','From Terminal Input'], studentClassList)
+        
+        if optionChosen == '1':
+            clearTerminal()
+            print("File entry rules:")
+            print(" - ONLY txt is supported") # For now!
+            print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+            inputFileName = input("Enter file name: ") + ".txt"
+
+            inputFile = open(inputFileName, "r")
+
+            content = inputFile.readlines()
+
+            inputFile.close()
+
+            for x in range(0, len(content)):
+                if x == 0:
+                    text = content[x]
+                elif x > 0:
+                    text += " " + content[x]
+            
+            clearTerminal()
+            optionChosen = menuFunction('Output',['To file','To Terminal'],studentClassList)
+            
+            if optionChosen == '1':
+                clearTerminal()
                 
+                print("File entry rules:")
+                print(" - ONLY txt is supported") # For now!
+                print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                output = gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
+                
+                outputFileName = input("Enter file name: ") + ".txt"
+                outputFile = open(outputFileName, "w")
+                outputFile.write(output)
+                outputFile.close()
+                
+            if optionChosen == '2':
+                clearTerminal()
+                print(gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+                
+            
+        if optionChosen == '2':
+            clearTerminal()
+            
+            text = input('Enter message: ')
+            
+            optionChosen == menuFunction('Output', ['To File', 'To Terminal'], studentClassList)
+            
+            if optionChosen == '1':
+                clearTerminal()
+                print("File entry rules:")
+                print(" - ONLY txt is supported") # For now!
+                print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                output = gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
+                
+                outputFileName = input("Enter file name: ") + ".txt"
+                outputFile = open(outputFileName, "w")
+                outputFile.write(output)
+                outputFile.close()
+                
+            if optionChosen == '2':
+                clearTerminal()
+                print(gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+        
+    if optionChosen == '2':
+        clearTerminal()
+           
+        
         
                 
                
