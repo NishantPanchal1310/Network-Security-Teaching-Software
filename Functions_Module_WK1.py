@@ -46,7 +46,6 @@ def readFilePK(filename):
     message_get = pickle.load(pickle_in)
     pickle_in.close()
     return message_get
-    # Don't need to catch an error as this will only used in the backend, plus it makes it easier to debug.
 
 
 #save given text to a pickle file of a given name
