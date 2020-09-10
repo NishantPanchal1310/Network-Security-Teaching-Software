@@ -156,7 +156,8 @@ gen_sig:
         authentication purposes. The user's private key and n is used to encrypt a hashed message 
         and its padding with the hash function used specified.
     Syntax:
-        - Message must be given as a string.
+        - Message must be given as a string. STRING LONGER THAN 64 DIGITS IN LENGTH RUN THE RISK OF NOT
+          ENCRYPTING AND DECRYPTING CORRECTLY.
         - d and n are to be given as integers in BASE 10.
         - A single string is outputted, with the message in front and the signature following. The 
           message and the signature are divided by 0x.
