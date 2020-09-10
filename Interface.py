@@ -330,6 +330,8 @@ if optionChosen == '3':
             if optionChosen == '1':
                 clearTerminal()
                 
+                optionChosen = menuFunction('Which key',['Your private key',"Somebody else's public key"], studentClassList)
+                
                 print("File entry rules:")
                 print(" - ONLY txt is supported") # For now!
                 print(" - Do not enter the .txt at the end, otherwise you will get an error")
@@ -372,6 +374,7 @@ if optionChosen == '3':
         
     if optionChosen == '2':
         clearTerminal()
+        
            
         
         
