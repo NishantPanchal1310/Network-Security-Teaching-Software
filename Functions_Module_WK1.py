@@ -112,7 +112,22 @@ def importFile():
 ##TESTING FUNCTIONS##        
 if __name__ == "__main__":
     #Test loading animation
-    loadingAnimation("test",4)
+    loadingAnimation("test",4,##TESTING FUNCTIONS##        
+if __name__ == "__main__":
+    #Test loading animation
+    loadingAnimation("test", 4, "Loading")
+    sleep(3)
+ 
+    #Testing Hashing function
+    text = "Test"
+    print(hashText(text))
+
+    #Testing reading and writing
+    msg = input("Enter stuff to save: ")
+    filename = input("Enter Filename to save: ")
+    saveFilePK(msg, filename)
+    print("Retrieved: " + readFilePK(filename))
+
     sleep(3)
  
     #Testing Hashing function
