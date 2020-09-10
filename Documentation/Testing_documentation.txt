@@ -1,1 +1,28 @@
-
+######### SPRINT WEEK ONE ###############
+  Hash function:
+    Setting up the hashing text function was relatively simple and required a few lines of testing in the
+    Functions_Module_WK1.py file, which took a small string and fed it through the defined function 
+    hashText(). Some trial and error was required to hash the text, mainly not forgetting to convert the 
+    text into a byte object first. 
+    
+  Reading and writing to a pickle file:
+    Our first attempt at reading and writing to a file was a simplistic pickle function. There were little 
+    to no troubles setting it out, testing code is provided in the Functions_Module_WK1.py. 
+    
+  Loading animation:
+    This was a function just built for fun and acts as a transition and screen clearer between different
+    menu options. Testing is provided in the Functions_Module_WK1.py. This will also test the 
+    clearTerminal() function, but beware mac users! It doesn't really workfor you.
+  
+  menuFunction:
+    This was implemented in the functions interface. The file Interface.py acts as the test code for it,
+    where it brings together the whole program and readily is reused in different menu screens to        
+    automatically include saving files.
+    
+  Importing from txt files
+    After some consideration of the possibility a user may want to read something from a txt file, this
+    function was implemented. Testing code is provided in the Functions_Module_WK1.py
+    
+    
+  
+  
