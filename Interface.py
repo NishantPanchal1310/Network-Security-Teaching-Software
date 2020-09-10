@@ -398,7 +398,7 @@ if optionChosen == '3':
             
             
             
-            '''
+'''
             optionChosen = menuFunction(None, ["Output to file", "Output to terminal"], studentClassList)
             
             if optionChosen == "1":
@@ -441,7 +441,7 @@ if optionChosen == '3':
             
             if optionChosen == "2":
                 print(f"Hashed text is: {output}")
-            '''
+'''
             
             
             
