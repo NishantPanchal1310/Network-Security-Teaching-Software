@@ -91,16 +91,7 @@ def menuFunction(menuTitle, optionList, listOfObjects):
     clearTerminal()
 
 
-##TESTING FUNCTIONS##        
-if __name__ == "__main__":
-    #Test loading animation
-    loadingAnimation("test",4)
-    sleep(3)
- 
-    #Testing Hashing function
-    text = "Test"
-    print(hashText(text))
-    
+
 ##IMPORTING FILES##
 def importFile():
    
@@ -119,3 +110,13 @@ def importFile():
     x = importFile()
     print(x)
 
+##TESTING FUNCTIONS##        
+if __name__ == "__main__":
+    #Test loading animation
+    loadingAnimation("test",4)
+    sleep(3)
+ 
+    #Testing Hashing function
+    text = "Test"
+    print(hashText(text))
+    
