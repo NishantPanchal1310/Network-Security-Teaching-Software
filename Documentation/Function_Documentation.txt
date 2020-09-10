@@ -10,6 +10,9 @@ Implementing RSA:
 https://pypi.org/project/rsa/ 
 
 #######               FUNCTIONS             ###############################
+
+
+####################Sprint week 1#####################
 Clear Terminal Function
     Description:
         Clear all prints on the terminal.
@@ -72,6 +75,7 @@ Save file Pickle:
         - filename be given as string.
         - text is given as any python variable type
         
+####################Sprint week 2#####################      
 
 RSA_encode:
     Description:
@@ -145,6 +149,32 @@ save_student_database:
         instantiated.
         -listOfObjects is the temporary database of all the student objects when the interface is run.
         
+####################Sprint week 3#####################   
+gen_sig:
+    Description:
+        This is used to generate a signed message along with a given message, which can be used for 
+        authentication purposes. The user's private key and n is used to encrypt a hashed message 
+        and its padding with the hash function used specified.
+    Syntax:
+        - Message must be given as a string. STRING LONGER THAN 64 DIGITS IN LENGTH RUN THE RISK OF NOT
+          ENCRYPTING AND DECRYPTING CORRECTLY.
+        - d and n are to be given as integers in BASE 10.
+        - A single string is outputted, with the message in front and the signature following. The 
+          message and the signature are divided by 0x.
+
+check_sig:
+    Description:
+        This takes the output from gen_sig, which may be sent to a recipient to verify the legitimacy
+        of a message. The ouput from gen_sig is broken into a list with the original message, plus
+        the signed message. Then, the signed message is decrypted and the padding taken to hash the 
+        original message.
+        Finally, the function returns whether or not the hashed original message and the hashed message
+        from the signature. If they match it indicates that the message is legitimate.
+    Syntax: 
+        -   output message is given as string (should be <message>0x<encrypted signature>)
+        -   The e and n values are to be given as integers in BASE 10
+        -   This function will print both hashed messages, and verify whether they are identical.
+        -   Will also print padding.
         
 ##### KEY GENERATION FOR RSA #########################################################
 
@@ -157,7 +187,7 @@ gen_key:
         No input required.
         Keys are returned in DECIMAL in a list like this: [n, d, e]
 #################     
-    
+   
 ###unused/backup
 gen_prime function:
     Description:
@@ -178,7 +208,7 @@ gen_prime function:
         - bits is given as int, but it will only be used to read the file which the prime numbers 
           are stored in.
         - It will return e, d and n as a tuple.
-    
+############## 
     
 
 

@@ -1,6 +1,6 @@
 ### Version Info
 # Version: SW 1
-# Build Number: 1.0
+# Build Number: 2.2 (final)
 #------------------------------------------------------------------------#
 
 import hashlib
@@ -46,7 +46,6 @@ def readFilePK(filename):
     message_get = pickle.load(pickle_in)
     pickle_in.close()
     return message_get
-    # Don't need to catch an error as this will only used in the backend, plus it makes it easier to debug.
 
 
 #save given text to a pickle file of a given name
@@ -91,16 +90,7 @@ def menuFunction(menuTitle, optionList, listOfObjects):
     clearTerminal()
 
 
-##TESTING FUNCTIONS##        
-if __name__ == "__main__":
-    #Test loading animation
-    loadingAnimation("test",4)
-    sleep(3)
- 
-    #Testing Hashing function
-    text = "Test"
-    print(hashText(text))
-    
+
 ##IMPORTING FILES##
 def importFile():
    
@@ -115,7 +105,34 @@ def importFile():
     importedFile.close()
 
     return fileContent
-    ##PUT THIS OUTSIDE FUNCTION##
+
+##TESTING FUNCTIONS##        
+if __name__ == "__main__":
+    #Test loading animation
+    loadingAnimation("test",4,##TESTING FUNCTIONS##        
+if __name__ == "__main__":
+    #Test loading animation
+    loadingAnimation("test", 4, "Loading")
+    sleep(3)
+ 
+    #Testing Hashing function
+    text = "Test"
+    print(hashText(text))
+
+    #Testing reading and writing
+    msg = input("Enter stuff to save: ")
+    filename = input("Enter Filename to save: ")
+    saveFilePK(msg, filename)
+    print("Retrieved: " + readFilePK(filename))
+
+    sleep(3)
+ 
+    #Testing Hashing function
+    text = "Test"
+    print(hashText(text))
+                     
+    ##test importing from txt##
     x = importFile()
     print(x)
 
+    
