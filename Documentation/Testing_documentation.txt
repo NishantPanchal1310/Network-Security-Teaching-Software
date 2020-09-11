@@ -1,28 +1,37 @@
 ######### SPRINT WEEK ONE ###############
-  Hash function:
-    Setting up the hashing text function was relatively simple and required a few lines of testing in the
-    Functions_Module_WK1.py file, which took a small string and fed it through the defined function 
-    hashText(). Some trial and error was required to hash the text, mainly not forgetting to convert the 
-    text into a byte object first. 
+Hash function:
+Setting up the hashing text function was relatively simple and required a few lines of testing in the
+Functions_Module_WK1.py file, which took a small string and fed it through the defined function hashText(). Some trial and error was required to hash the text, mainly not forgetting to convert the text into a byte object first. 
+
+Reading and writing to a pickle file:
+Our first attempt at reading and writing to a file was a simplistic pickle function. There were little to no troubles setting it out, testing code is provided in the Functions_Module_WK1.py. 
     
-  Reading and writing to a pickle file:
-    Our first attempt at reading and writing to a file was a simplistic pickle function. There were little 
-    to no troubles setting it out, testing code is provided in the Functions_Module_WK1.py. 
-    
-  Loading animation:
-    This was a function just built for fun and acts as a transition and screen clearer between different
-    menu options. Testing is provided in the Functions_Module_WK1.py. This will also test the 
-    clearTerminal() function, but beware mac users! It doesn't really workfor you.
+Loading animation:
+This was a function just built for fun and acts as a transition and screen clearer between different menu options. Testing is provided in the Functions_Module_WK1.py. This will also test the clearTerminal() function, but beware mac users! It doesn't really work for you.
   
-  menuFunction:
-    This was implemented in the functions interface. The file Interface.py acts as the test code for it,
-    where it brings together the whole program and readily is reused in different menu screens to        
-    automatically include saving files.
+menuFunction:
+This was implemented in the functions interface. The file Interface.py acts as the test code for it, where it brings together the whole program and readily is reused in different menu screens to automatically include saving files.
     
-  Importing from txt files
-    After some consideration of the possibility a user may want to read something from a txt file, this
-    function was implemented. Testing code is provided in the Functions_Module_WK1.py
+Importing from txt files
+After some consideration of the possibility a user may want to read something from a txt file, this function was implemented. Testing code is provided in the Functions_Module_WK1.py
     
+    
+    
+######### SPRINT WEEK TWO ###############
+Generating 512 bit keys
+Some testing was completed on a trial and error basis to ensure the tuple of (pubkey, privkey) is output as a list of respective keys that are usable internally. Originally, we had planned to use  some experimental methods to manually generate keys, but lacked computing power to generate to a feasible size such that security is viable. 
+We had run into all sorts of formatting problems throughout all the functions, which were written for hexadecimal inputs, and in the end we opted to standardize the key entries as integers in base 10.
+For testing, it is included in the RSA_module_WK2 to produce a list of keys. Refer to function documentation for specific syntax of output.
+
+RSA encoding
+Steps taken to decide how were inputs best taken and outputs formatted included the trial and error of different lengths of text. In the end, we had chosen to break a message into blocks of size 50. Also, the cipher was changed to be output as one string of all the encoded 50 char lengths of text. That way, it is easier to read the specific digits in the output rather than having it as a long list.
+Testing is provided in the RSA_module_WK2 which will print the message "wassup" as the encoded version after being put through the function.
+
+RSA decoding
+To decode, it was relatively straightforward and followed by undoing everything that the RSA encode function had done. For syntax, the alteration to RSA encoding to output it as a string was ammended in the first line of the function.
+Testing is also in the module as encoding (see immedi. above) and will return wassup if it works correctly. Debugging step by step was done as part of this, to ensure any errors were the fault of this function and not the encoding function.
     
   
-  
+
+
+
