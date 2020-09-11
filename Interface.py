@@ -168,6 +168,7 @@ if optionChosen == "1":
         
         if optionChosen == "2":
             print(f"Hashed text is: {output}")
+            input("press any key to dismiss")
         
 ### RSA
 #------------------------------------------------------------------------#       
@@ -217,6 +218,7 @@ if optionChosen == "2":
                     
                 if optionChosen == '2':
                     print(RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
+                    input("press any key to dismiss")
                     
                     
             if optionChosen == '2':
@@ -233,7 +235,8 @@ if optionChosen == "2":
             
             
             if optionChosen == "1":
-                 print(RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
+                print(RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
+                input("press any key to dismiss")
                 
             if optionChosen == '2':
                 studentName = input('Enter student name: ')
@@ -281,6 +284,7 @@ if optionChosen == "2":
                     
                 if optionChosen == '2':
                     print(RSA_decode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+                    input("press any key to dismiss")
                 
             if optionChosen == '2':
                 studentName = input('Enter student name: ')
@@ -323,6 +327,7 @@ if optionChosen == "2":
                     
                 if optionChosen == '2':
                     print(RSA_decode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+                    input("press any key to dismiss")
                     
                     
             if optionChosen == '2':
@@ -341,6 +346,7 @@ if optionChosen == "2":
                 
                 if optionChosen == '2':
                     print(RSA_decode(text, studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
+                    input("press any key to dismiss")
                     
 
 
@@ -349,81 +355,289 @@ if optionChosen == "2":
 if optionChosen == '3':
     clearTerminal()
     optionChosen = menuFunction("Digital Signatures", ["Generate Signature", "Check Signature"],studentClassList)
+
     if optionChosen == '1':
         clearTerminal()
-        optionChosen = menuFunction('Format', ['From File','From Terminal Input'], studentClassList)
+        optionChosen = menuFunction("Who's key?",["My private","Somebody else's public"],studentClassList)
         
         if optionChosen == '1':
             clearTerminal()
-            print("File entry rules:")
-            print(" - ONLY txt is supported") # For now!
-            print(" - Do not enter the .txt at the end, otherwise you will get an error")
+            optionChosen = menuFunction('Format', ['From File','From Terminal Input'], studentClassList)
 
-            inputFileName = input("Enter file name: ") + ".txt"
-
-            inputFile = open(inputFileName, "r")
-
-            content = inputFile.readlines()
-
-            inputFile.close()
-
-            for x in range(0, len(content)):
-                if x == 0:
-                    text = content[x]
-                elif x > 0:
-                    text += " " + content[x]
-            
-            clearTerminal()
-            optionChosen = menuFunction('Output',['To file','To Terminal'],studentClassList)
-            
             if optionChosen == '1':
                 clearTerminal()
-                
-                optionChosen = menuFunction('Which key',['Your private key',"Somebody else's public key"], studentClassList)
-                
+
                 print("File entry rules:")
                 print(" - ONLY txt is supported") # For now!
                 print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
-                output = gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
+                inputFileName = input("Enter file name: ") + ".txt"
+
+                inputFile = open(inputFileName, "r")
+
+                content = inputFile.readlines()
+
+                inputFile.close()
+
+                for x in range(0, len(content)):
+                    if x == 0:
+                        text = content[x]
+                    elif x > 0:
+                        text += " " + content[x]
+
+                optionChosen = menuFunction('Output',['To file','To Terminal'],studentClassList)
+
+                if optionChosen == '1':
+                    clearTerminal()
+                    
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                    output = gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
+                    
+                    outputFileName = input("Enter file name: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
+
+                if optionChosen == '2':
+                    clearTerminal()
+                    print(gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+                    input("press any key to dismiss")
+
+            if optionChosen == '2':
+                clearTerminal()
+                text = input('Enter message: ')
+            
+                optionChosen == menuFunction('Output', ['To File', 'To Terminal'], studentClassList)
+                if optionChosen == '1':
+                    clearTerminal()
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                    output = gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
+                    
+                    outputFileName = input("Enter file name: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
                 
-                outputFileName = input("Enter file name: ") + ".txt"
-                outputFile = open(outputFileName, "w")
-                outputFile.write(output)
-                outputFile.close()
+                if optionChosen == '2':
+                    clearTerminal()
+                    print(gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+                    input("press any key to dismiss")
+
+        if optionChosen == '2':
+            clearTerminal()
+            studentName = input('Enter student name: ')
+            student = search_by_name(studentName,studentClassList)
+
+            optionChosen = menuFunction('Format', ['From File','From Terminal Input'], studentClassList)
+            if optionChosen == '1':
+                clearTerminal()
+
+                print("File entry rules:")
+                print(" - ONLY txt is supported") # For now!
+                print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                inputFileName = input("Enter file name: ") + ".txt"
+
+                inputFile = open(inputFileName, "r")
+
+                content = inputFile.readlines()
+
+                inputFile.close()
+
+                for x in range(0, len(content)):
+                    if x == 0:
+                        text = content[x]
+                    elif x > 0:
+                        text += " " + content[x]
+
+                optionChosen = menuFunction('Output',['To file','To Terminal'],studentClassList)
+                if optionChosen == '1':
+                    clearTerminal()
+                    
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                    output = gen_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue())
+                    
+                    outputFileName = input("Enter file name: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
+
+                if optionChosen == '2':
+                    clearTerminal()
+                    print(gen_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
+                    input("press any key to dismiss")
+
+            if optionChosen == '2':
+                clearTerminal()
+                text = input('Enter message: ')
+            
+                optionChosen = menuFunction('Output', ['To File', 'To Terminal'], studentClassList)
+                if optionChosen == '1':
+                    clearTerminal()
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                    output = gen_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
+                    
+                    outputFileName = input("Enter file name: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
+                
+                if optionChosen == '2':
+                    clearTerminal()
+                    print(gen_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
+                    input("press any key to dismiss")
+
+    if optionChosen == '2':
+        clearTerminal()
+
+        optionChosen = menuFunction("Who's key?",["My private","Somebody else's public"],studentClassList)
+        if optionChosen == '1':
+            clearTerminal()
+
+            optionChosen = menuFunction('Format', ['From File','From Terminal Input'], studentClassList)
+            if optionChosen == '1':
+                clearTerminal()
+                print("File entry rules:")
+                print(" - ONLY txt is supported") # For now!
+                print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                inputFileName = input("Enter file name: ") + ".txt"
+
+                inputFile = open(inputFileName, "r")
+
+                content = inputFile.readlines()
+
+                inputFile.close()
+
+                for x in range(0, len(content)):
+                    if x == 0:
+                        text = content[x]
+                    elif x > 0:
+                        text += " " + content[x]
+
+                optionChosen = menuFunction('Output', ['To File', 'To Terminal'], studentClassList)
+                if optionChosen == '1':
+                    clearTerminal()
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                    output = check_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+                    
+                    outputFileName = input("Enter file name: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
+                
+                if optionChosen == '2':
+                    clearTerminal()
+                    print(check_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+                    input("press any key to dismiss")
                 
             if optionChosen == '2':
                 clearTerminal()
-                print(gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+                text = input('Enter message: ')
+            
+                optionChosen == menuFunction('Output', ['To File', 'To Terminal'], studentClassList)
+                if optionChosen == '1':
+                    clearTerminal()
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                    output = check_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
+                    
+                    outputFileName = input("Enter file name: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
                 
+                if optionChosen == '2':
+                    clearTerminal()
+                    print(check_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+                    input("press any key to dismiss")
             
         if optionChosen == '2':
             clearTerminal()
-            
-            text = input('Enter message: ')
-            
-            optionChosen == menuFunction('Output', ['To File', 'To Terminal'], studentClassList)
-            
+            studentName = input('Enter student name: ')
+            student = search_by_name(studentName,studentClassList)
+
+            optionChosen = menuFunction('Format', ['From File','From Terminal Input'], studentClassList)
             if optionChosen == '1':
                 clearTerminal()
+
                 print("File entry rules:")
                 print(" - ONLY txt is supported") # For now!
                 print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
-                output = gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
-                
-                outputFileName = input("Enter file name: ") + ".txt"
-                outputFile = open(outputFileName, "w")
-                outputFile.write(output)
-                outputFile.close()
-                
+                inputFileName = input("Enter file name: ") + ".txt"
+
+                inputFile = open(inputFileName, "r")
+
+                content = inputFile.readlines()
+
+                inputFile.close()
+
+                for x in range(0, len(content)):
+                    if x == 0:
+                        text = content[x]
+                    elif x > 0:
+                        text += " " + content[x]
+
+                optionChosen = menuFunction('Output',['To file','To Terminal'],studentClassList)
+                if optionChosen == '1':
+                    clearTerminal()
+                    
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                    output = check_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue())
+                    
+                    outputFileName = input("Enter file name: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
+
+                if optionChosen == '2':
+                    clearTerminal()
+                    print(check_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
+                    input("press any key to dismiss")
+
             if optionChosen == '2':
                 clearTerminal()
-                print(gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
-        
-    if optionChosen == '2':
-        clearTerminal()
-        
+                text = input('Enter message: ')
+            
+                optionChosen = menuFunction('Output', ['To File', 'To Terminal'], studentClassList)
+                if optionChosen == '1':
+                    clearTerminal()
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+
+                    output = check_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
+                    
+                    outputFileName = input("Enter file name: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
+                
+                if optionChosen == '2':
+                    clearTerminal()
+                    print(check_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
+                    input("press any key to dismiss")
            
 ## Edit user ##
 if optionChosen == "4":
