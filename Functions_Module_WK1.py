@@ -107,6 +107,7 @@ def importFile():
 
     return fileContent
 
+    
 ##TESTING FUNCTIONS##
 if __name__ == "__main__":
     #Test loading animation
@@ -132,5 +133,3 @@ if __name__ == "__main__":
     ##test importing from txt##
     x = importFile()
     print(x)
-
-    

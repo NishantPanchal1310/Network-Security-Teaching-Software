@@ -13,3 +13,4 @@
 Run the setup.bat file
 
 For main interface and software:
+Run interface.py
