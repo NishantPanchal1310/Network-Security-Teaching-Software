@@ -37,7 +37,7 @@ elif optionChosen == "2":
             exist = False
         
     print("Creating Keys")
-    new_keys = gen_key(24)
+    new_keys = gen_key()
     
     studentClassList.append(new_student(student_name, new_keys[0], new_keys[1], new_keys[2]))
     student_number = len(studentClassList) - 1
