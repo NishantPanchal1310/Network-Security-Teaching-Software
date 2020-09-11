@@ -1,8 +1,9 @@
 from Functions_Module_WK1 import *
 from RSA_module_WK2 import *
 from Student_class import *
+from signature_Wk3_ver3 import *
 
-studentClassList = open_student_database()  
+studentClassList = open_student_database()
 
 ### Welcome screen
 #Need to comment everything here, will not be commented at all in the function documentation.
@@ -13,34 +14,81 @@ studentClassList = open_student_database()
 ### Welcome screen
 #------------------------------------------------------------------------#
 
-optionChosen = menuFunction(None, ["Login in", "Create new student"], studentClassList)
-
-if optionChosen == "1":
-    clearTerminal()
-    student_number = None
-    while student_number == None:
-        student_logined_in = input("Enter student name: ")
-        for i in range(0, len(studentClassList)):
-            if studentClassList[i].get_name() == student_logined_in:
-                student_number = i
-                break
-elif optionChosen == "2":
-    clearTerminal()
-    exist = True
-    while exist == True:
-        student_name = input("Enter new student name: ")
-        if len(studentClassList) > 0:
-            for i in range(0, len(studentClassList)):
-                if student_name not in studentClassList[i].get_name():
-                    exist = False
-        elif len(studentClassList) == 0:
-            exist = False
-        
-    print("Creating Keys")
-    new_keys = gen_key(24)
+if len(studentClassList) == 0:
+    optionChosen = menuFunction(None, ["Create new student"], studentClassList)
     
-    studentClassList.append(new_student(student_name, new_keys[0], new_keys[1], new_keys[2]))
-    student_number = len(studentClassList) - 1
+    if optionChosen == "1":
+        clearTerminal()
+        exist = True
+        while exist == True:
+            student_name = input("Enter new student name: ")
+            if len(studentClassList) > 0:
+                for i in range(0, len(studentClassList)):
+                    if student_name not in studentClassList[i].get_name():
+                        exist = False
+            elif len(studentClassList) == 0:
+                exist = False
+            
+        new_keys = gen_key()
+        
+        pmatch = False
+        while pmatch == False:
+            password1 = input("Enter password: ")
+            password2 = input("Enter password again: ")
+            
+            if password1 == password2:
+                pmatch = True
+            elif password1 != password2:
+                clearTerminal()
+                input("The password do not match please try again\nPress enter to dismiss")
+        
+        studentClassList.append(new_student(student_name, new_keys[0], new_keys[1], new_keys[2], password1))
+        student_number = len(studentClassList) - 1
+        
+        
+elif len(studentClassList) > 0:
+    optionChosen = menuFunction(None, ["Login in", "Create new student"], studentClassList)
+
+    if optionChosen == "1":
+        student_number = None
+        while student_number == None:
+            clearTerminal()
+            student_logined_in = input("Enter student name: ")
+            for i in range(0, len(studentClassList)):
+                if studentClassList[i].get_name() == student_logined_in:
+                    student_number = i
+                    break
+            password = input("Enter password: ")
+            if password != studentClassList[i].get_password():
+                student_number = None
+
+    elif optionChosen == "2":
+        clearTerminal()
+        exist = True
+        while exist == True:
+            student_name = input("Enter new student name: ")
+            if len(studentClassList) > 0:
+                for i in range(0, len(studentClassList)):
+                    if student_name not in studentClassList[i].get_name():
+                        exist = False
+            elif len(studentClassList) == 0:
+                exist = False
+            
+        new_keys = gen_key()
+        
+        pmatch = False
+        while pmatch == False:
+            password1 = input("Enter password: ")
+            password2 = input("Enter password again: ")
+            
+            if password1 == password2:
+                pmatch = True
+            elif password1 != password2:
+                clearTerminal()
+                input("The password do not match please try again\nPress enter to dismiss")
+        
+        studentClassList.append(new_student(student_name, new_keys[0], new_keys[1], new_keys[2], password1))
+        student_number = len(studentClassList) - 1
 
 ### Menu
 #------------------------------------------------------------------------#
@@ -180,6 +228,7 @@ if optionChosen == "2":
         if optionChosen == '2':
             clearTerminal()
             optionChosen = menuFunction("Who's public key?", ["Mine", "Someone elses"],studentClassList)
+            clearTerminal()
             text = input('Enter text: ')
             
             
@@ -376,24 +425,47 @@ if optionChosen == '3':
         clearTerminal()
         
            
+## Edit user ##
+if optionChosen == "4":
+    optionChosen = menuFunction("User Settings", ["Custom RSA keys", "Change password", "Delete User"], studentClassList)
+    if optionChosen == "1":
+        new_public_key = input("Enter new public key here: ")
+        studentClassList[student_number].edit_pubkey(new_public_key)
         
+        new_private_key = input("Enter new private key here: ")
+        studentClassList[student_number].edit_privkey(new_private_key)
         
+        new_n_value = input("Enter new n value here: ")
+        studentClassList[student_number].edit_nValue(new_n_value)
+            
+    if optionChosen == "2":
+        old_password = input("Enter your old password here: ")
+        if old_password != studentClassList[student_number].get_password():
+            input("Incorrect password!\nAutomatic program shutdown activated\nPress any key to dismiss")
+            exit()
+        elif old_password == studentClassList[student_number].get_password():
+            pmatch = False
+            while pmatch == False:
+                clearTerminal()
+                password1 = input("Enter password: ")
+                password2 = input("Enter password again: ")
                 
-               
-                
-            
-            
-            
-                
-            
-           
-        
-        
-            
-            
-            
-            
-            
+                if password1 == password2:
+                    pmatch = True
+                elif password1 != password2:
+                    clearTerminal()
+                    input("The password do not match please try again\nPress any key to dismiss")
+    
+    if optionChosen == "3":
+        old_password = input("Enter your old password here: ")
+        if old_password != studentClassList[student_number].get_password():
+            input("Incorrect password!\nAutomatic program shutdown activated\nPress enter to dismiss")
+            exit()
+        elif old_password == studentClassList[student_number].get_password():
+            studentClassList.pop(student_number)
+            input("Done!\nEnter any key to dimiss")
+            save_student_database(studentClassList)
+            exit()
             
             
             

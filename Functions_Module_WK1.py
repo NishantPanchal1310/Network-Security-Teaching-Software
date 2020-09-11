@@ -84,6 +84,7 @@ def menuFunction(menuTitle, optionList, listOfObjects):
                 print("Error 2\n For more information, please go to the Error_Documentation.txt file")
                 input("Press enter to dismiss")
         except:
+            clearTerminal()
             print("Error 2\n For more information, please go to the Error_Documentation.txt file")
             input("Press enter to dismiss")
 
@@ -106,10 +107,7 @@ def importFile():
 
     return fileContent
 
-##TESTING FUNCTIONS##        
-if __name__ == "__main__":
-    #Test loading animation
-    loadingAnimation("test",4,##TESTING FUNCTIONS##        
+##TESTING FUNCTIONS##
 if __name__ == "__main__":
     #Test loading animation
     loadingAnimation("test", 4, "Loading")

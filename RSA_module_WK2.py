@@ -1,9 +1,6 @@
 import hashlib
 import base64
 import rsa
-from RSA_Algorithm import *
-from Prime_Number_Generator import *
-
 
 
 #Generates public (e,n) and private (d,n) keys [128bit]

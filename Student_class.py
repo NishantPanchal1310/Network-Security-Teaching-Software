@@ -1,15 +1,14 @@
-from Prime_Number_Generator import gen_prime
-from RSA_Algorithm import generate_key_with_custom_RSA_alogrithm
 from Functions_Module_WK1 import *
 
 
 #Class for students is generated in order to use it for storing keys.
 class students():
-    def __init__(self, name, pubkey, privkey, nValue):
+    def __init__(self, name, pubkey, privkey, nValue, password):
         self.name = name
         self.pubkey = int(pubkey)
         self.privkey = int(privkey)
         self.nValue = int(nValue)
+        self.password = password
     
     
    # These methods return the respective values as given in the name
@@ -21,6 +20,8 @@ class students():
         return self.privkey
     def get_nValue(self):
         return self.nValue
+    def get_password(self):
+        return self.password
     
     # These methods can edit the values for keys.
     def edit_pubkey(self, new_key):
@@ -29,10 +30,12 @@ class students():
         self.privkey = int(new_key)
     def edit_nValue(self, new_key):
         self.nValue = int(new_key)
+    def edit_password(self, password):
+        self.password = password
 
 # function is used to create a new student.
-def new_student(name, e, d, n):
-    new_student = students(name, e, d, n)
+def new_student(name, e, d, n, password):
+    new_student = students(name, e, d, n, password)
     return new_student
 
 #Used to open and take out the student objects from the file containing it.
