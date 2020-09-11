@@ -49,7 +49,7 @@ Checking signatures
 Checking signatures was completed in parallel with the generation of signatures, as they are interpendent. Originally, from debugging it was speculated that the problems evolved from an incorrect decoding of the signature with the RSA keys, but it was infact due to the inconsistency of string length, leading to the output of very strange, unmatching hashed strings. 
 To make it easier to check if the hashed message and the hash from the signature was the same, some code was written at the end to obviate the trouble of going to an external website to compare the strings. 
 Testing for both checking and generating a signature is found at the bottom of the signature_wk3_ver3.py module. The output of the gen_sig function is immediately fed into the check_sig. If they work then the printed text will tell the user. Any length of string can be inputed as the message if desired.
-
+The commented out code was kept as an example of errors found from our testing.
 
 
 ######### The Interface. ###############
