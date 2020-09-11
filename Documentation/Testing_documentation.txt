@@ -30,8 +30,27 @@ Testing is provided in the RSA_module_WK2 which will print the message "wassup" 
 RSA decoding
 To decode, it was relatively straightforward and followed by undoing everything that the RSA encode function had done. For syntax, the alteration to RSA encoding to output it as a string was ammended in the first line of the function.
 Testing is also in the module as encoding (see immedi. above) and will return wassup if it works correctly. Debugging step by step was done as part of this, to ensure any errors were the fault of this function and not the encoding function.
-    
-  
+ 
+> Creating a student class <
+AS part of sprint week 2 we had decided on a more modular method of storing a student's keys, and this was done by OOP from a class called students. It contained the name, which we had implemented to be the method which a person can find their specific keys from the local database (as a pickle file).
+    The function new_student is to instantiate a new object from the student class
+    The open student database and save student database was found to be more effective at storing data when using the pickle file functions. 
+    The search by name function is included to find a student within the list of all the students for quick retrieval of keys and 'logging in' with name. Some testing in the interface module had found this to be the best way to implement it. 
+In lieu of that, the testing for this class is present in the interface.py file.
+
+######### SPRINT WEEK Three ###############
+
+Generating signatures
+This and the following had the most problems of all. It was due to the fact that the process involved a lot of conversion of string to bytes to hex and hashing string before converting to hex, ect. To counter all of this, each step was completed using VS Code's debugging feature where markers are set on specific lines of code and the outputs were recorded and stored to determine faults in the function. This was better in the approach than simply printing as some lists had an inane amount of text to compare. Likewise, assistance from a digit counting website and several hex, byte and decimal converters on websites were used. 
+Ultimately, from testing in the final stages the problem was derived from overcomplication of splitting up the text unnecessarily when the whole string could be hashed before being split into a list. Likewise, zfill was not used to compensate for varying lengths of the hash function.
+From testing the methods of split() and .join(), the best way to output the signature and the message was in the syntax of <message0xsignature>.
+
+Checking signatures
+Checking signatures was completed in parallel with the generation of signatures, as they are interpendent. Originally, from debugging it was speculated that the problems evolved from an incorrect decoding of the signature with the RSA keys, but it was infact due to the inconsistency of string length, leading to the output of very strange, unmatching hashed strings. 
+To make it easier to check if the hashed message and the hash from the signature was the same, some code was written at the end to obviate the trouble of going to an external website to compare the strings. 
+Testing for both checking and generating a signature is found at the bottom of the signature_wk3_ver3.py module. The output of the gen_sig function is immediately fed into the check_sig. If they work then the printed text will tell the user. Any length of string can be inputed as the message if desired.
 
 
+
+######### The Interface. ###############
 
