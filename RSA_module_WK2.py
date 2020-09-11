@@ -1,8 +1,8 @@
 import hashlib
 import base64
 import rsa
-from RSA_Algorithm import *
-from Prime_Number_Generator import *
+#from RSA_Algorithm import *
+#from Prime_Number_Generator import *
 
 
 
@@ -43,7 +43,7 @@ def gen_key(bits):
 '''
 #Message as string, e and n as str and in base 10
 def RSA_encode(message, e, n):
-    # Encoding blocks of two character
+    #Breaking long message into blocks of 50
     message_split = [message[i:i+50] for i in range(0, len(message), 50)]# Spliting str into list
     message_split_bytes = []
     message_split_hex = []
@@ -64,12 +64,18 @@ def RSA_encode(message, e, n):
     for i in message_split_int:
         cipher_n = pow(i, int(e), int(n)) # Put through function
         cipher.append(hex(cipher_n))
-
+    
+    #joining back the blocks as str for simplicity
+    cipher  = "".join(cipher)
     return cipher
 
 
 #Decodes the cipher when given d and n. d and n are given as decimal. The cipher is the string.
 def RSA_decode(cipher, d, n):   
+    #Break up cipher into list of blocks of messages 50 char in length.
+    cipher = [cipher[i:i+50] for i in range(0, len(cipher), 50)]
+
+
     #lists that temp. store each step of cipher
     C = []
     N = []
@@ -101,6 +107,8 @@ def RSA_decode(cipher, d, n):
 if __name__ == "__main__":
     # Key are generated using the RSA_Alogrithm
     print(gen_key())
+
+    #The follow code tests the encoding and decoding of text.
     ciphered_m = RSA_encode("wassup", "65537", "173063978907173071241342391096850925381")
-    print(ciphered_m)
-    print(RSA_decode(ciphered_m, "155249773165259502585672232200778849889","173063978907173071241342391096850925381"))
+    print("encoded message: " + ciphered_m)
+    print("Decoded: " + RSA_decode(ciphered_m, "155249773165259502585672232200778849889","173063978907173071241342391096850925381"))
