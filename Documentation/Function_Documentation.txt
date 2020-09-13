@@ -180,7 +180,7 @@ check_sig:
 
 gen_key:
     Description:
-        using installed module rsa, generates a public (e,n) and private (d,n) key in 128 bit and       
+        using installed module rsa, generates a public (e,n) and private (d,n) key in 512 bit and       
         returns it as a list of keys = [n key, d key, e key] 
     Syntax:
         No input required.
