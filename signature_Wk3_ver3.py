@@ -67,7 +67,7 @@ def check_sig(output, e, n):
 
         hashed_m =  "".join(hash_list)
         '''
-        hashed_m = hashlib.sha3_512(message.encode()).hexdigest()
+        hashed_m = eval(f"hashlib.{padding}(message.encode()).hexdigest()")
 
         #Take out b"sha3_512".hex() (which is the first 16 bytes)
         print("Message from signature: " + "\n" + signed_m[16:] + "\n")

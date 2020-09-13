@@ -6,7 +6,7 @@ import rsa
 
 
 
-#Generates public (e,n) and private (d,n) keys [128bit]
+#Generates public (e,n) and private (d,n) keys [512bit]
 #Alternate approach but relies on the use of rsa import.
 def gen_key():
     (pubkey, privkey) = rsa.newkeys(512)
@@ -44,7 +44,7 @@ def gen_key(bits):
 #Message as string, e and n as str and in base 10
 def RSA_encode(message, e, n):
     #Breaking long message into blocks of 50
-    message_split = [message[i:i+50] for i in range(0, len(message), 50)]# Spliting str into list
+    message_split = [message[i:i+16] for i in range(0, len(message), 16)]# Spliting str into list
     message_split_bytes = []
     message_split_hex = []
     message_split_int = []
@@ -64,7 +64,7 @@ def RSA_encode(message, e, n):
     for i in message_split_int:
         cipher_n = pow(i, int(e), int(n)) # Put through function
         cipher.append(hex(cipher_n))
-    
+        
     #joining back the blocks as str for simplicity
     cipher  = "".join(cipher)
     return cipher
@@ -73,8 +73,8 @@ def RSA_encode(message, e, n):
 #Decodes the cipher when given d and n. d and n are given as decimal. The cipher is the string.
 def RSA_decode(cipher, d, n):   
     #Break up cipher into list of blocks of messages 50 char in length.
-    cipher = [cipher[i:i+50] for i in range(0, len(cipher), 50)]
-
+    cipher = cipher.split('0x')
+    cipher = cipher[1:]
 
     #lists that temp. store each step of cipher
     C = []
@@ -84,7 +84,7 @@ def RSA_decode(cipher, d, n):
     decoded_message = []
 
     for i in cipher:
-        C.append(int(i[2:], 16)) # Convert to number
+        C.append(int(i, 16)) # Convert to number
         
     for i in C:
         N.append(pow(i, int(d), int(n))) # Reverse through function
@@ -109,6 +109,6 @@ if __name__ == "__main__":
     print(gen_key())
 
     #The follow code tests the encoding and decoding of text.
-    ciphered_m = RSA_encode("wassup", "65537", "173063978907173071241342391096850925381")
+    ciphered_m = RSA_encode("hello djf alkejfklajfdlkajrflkajflkeajfaeiltfjaweskjfskl jtlkjsekljz", "65537", "11723087253621038540617270065495609242591710500556289890700176949875148684480984805819907599320837558245210193280379774462990384004325702123948704997207601")
     print("encoded message: " + ciphered_m)
-    print("Decoded: " + RSA_decode(ciphered_m, "155249773165259502585672232200778849889","173063978907173071241342391096850925381"))
+    print("Decoded: " + RSA_decode(ciphered_m, "7797623015393568702604453006623504251080425471722077435882053093656369396826802935591468805848897290139059477614451217656187882589768924456469723679931265","11723087253621038540617270065495609242591710500556289890700176949875148684480984805819907599320837558245210193280379774462990384004325702123948704997207601"))
