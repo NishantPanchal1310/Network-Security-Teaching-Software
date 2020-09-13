@@ -146,9 +146,10 @@ while True:
                 
                 optionChosen = None
             
-            if optionChosen == 2:
+            if optionChosen == "2":
+                clearTerminal()
                 print(f"Hashed text is: {output}")
-                
+                input("press any key to dismiss")
                 optionChosen = None
         
         if optionChosen == "2":

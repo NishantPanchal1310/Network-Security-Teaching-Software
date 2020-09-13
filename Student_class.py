@@ -55,7 +55,7 @@ def save_student_database(listOfObjects):
     
 # A method to search for a student using their name by checking every object in a list.
 def search_by_name(name, listOfObjects):
-    for objects in listOfObjects:
-        if objects.get_name() == name:
-            return objects
+    for i in range(0, len(listOfObjects)):
+        if (listOfObjects[i].get_name()).lower() == name.lower():
+            return i
         
