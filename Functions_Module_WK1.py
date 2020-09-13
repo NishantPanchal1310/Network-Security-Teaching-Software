@@ -69,24 +69,27 @@ def menuFunction(menuTitle, optionList, listOfObjects):
         for r in range(0, len(optionList)):
             print(f" [{r+1}] - {optionList[r]}")
 
-        print("[99] - Exit")
+        print("[99] - Main Menu")
 
-        optionChoosen = input('Enter option: ')
+        optionChosen = input('Enter option: ')
         
-        if optionChoosen == "99":
+        if optionChosen == "99":
             saveFilePK(listOfObjects,"studentData")
-            exit()
+            optionChosen = None
         
         try:
-            if int(optionChoosen) > 0 and int(optionChoosen) <= (r+1):
-                return optionChoosen
+            if int(optionChosen) > 0 and int(optionChosen) <= (r+1):
+                return optionChosen
             else:
                 print("Error 2\n For more information, please go to the Error_Documentation.txt file")
                 input("Press enter to dismiss")
         except:
-            clearTerminal()
-            print("Error 2\n For more information, please go to the Error_Documentation.txt file")
-            input("Press enter to dismiss")
+            if optionChosen == None:
+                return optionChosen
+            else:
+                clearTerminal()
+                print("Error 2\n For more information, please go to the Error_Documentation.txt file")
+                input("Press enter to dismiss")
 
     clearTerminal()
 
