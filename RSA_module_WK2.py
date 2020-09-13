@@ -34,13 +34,7 @@ def gen_key():
     keys = [n_key, d_key, e_key]
     return keys
     #Instead of return directly interact with students class
-# Generates keys
-'''
-def gen_key(bits):
-    gen_prime(bits)
-    keys = generate_key_with_custom_RSA_alogrithm(bits)
-    return keys # Can be treated as a list
-'''
+
 #Message as string, e and n as str and in base 10
 def RSA_encode(message, e, n):
     #Breaking long message into blocks of 50

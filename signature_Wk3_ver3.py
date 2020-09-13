@@ -4,12 +4,8 @@ import hashlib
 def gen_sig(message, d, n):
     hash_list = []
 
-    #Creating list of hashed 50 char length messages
-    '''
-    message_list = [message[i:i+50] for i in range(0, len(message), 50)]
-    for i in message_list:
-        hash_list.append(hashlib.sha3_512(i.encode()).hexdigest())
-    '''
+
+
     hash_list = hashlib.sha3_512(message.encode()).hexdigest()
     
     #Add the padding
@@ -57,16 +53,7 @@ def check_sig(output, e, n):
         
         #Hash message as before:
         message = output_split[0]
-        '''
-        message_list = [message[i:i+50] for i in range(0, len(message), 50)]
-        hash_list = []
-        for i in message_list:
-            #i_hashed = eval(f"hashlib.{padding}(i.encode()).hexdigest()")
-            #hash_list.append(i_hashed)
-            hash_list.append(hashlib.sha3_512(i.encode()).hexdigest())
 
-        hashed_m =  "".join(hash_list)
-        '''
         hashed_m = eval(f"hashlib.{padding}(message.encode()).hexdigest()")
 
         #Take out b"sha3_512".hex() (which is the first 16 bytes)
