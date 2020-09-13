@@ -5,13 +5,12 @@ from signature_Wk3_ver3 import *
 
 studentClassList = open_student_database()
 
-### Welcome screen
-#Need to comment everything here, will not be commented at all in the function documentation.
+### Loading Animation ###
 #------------------------------------------------------------------------#
 
-# loadingAnimation("Welcome to Network Security Teaching Software", 2, "Loading")
+loadingAnimation("Welcome to Network Security Teaching Software", 2, "Loading")
 
-### Welcome screen
+### Welcome screen ###
 #------------------------------------------------------------------------#
 
 if len(studentClassList) == 0:
@@ -90,7 +89,7 @@ elif len(studentClassList) > 0:
         studentClassList.append(new_student(student_name, new_keys[0], new_keys[1], new_keys[2], password1))
         student_number = len(studentClassList) - 1
 
-### Menu
+### Menu ###
 #------------------------------------------------------------------------#
 
 while True:
@@ -100,7 +99,7 @@ while True:
         clearTerminal()
         exit()
 
-    ### Hashing
+    ### Hashing ###
     #------------------------------------------------------------------------#
 
     if optionChosen == "1":
@@ -110,7 +109,7 @@ while True:
             clearTerminal()
             
             print("File entry rules:")
-            print(" - ONLY txt is supported") # For now!
+            print(" - ONLY txt is supported") 
             print(" - Do not enter the .txt at the end, otherwise you will get an error")
             
             inputFileName = input("Enter filename or path: ") + ".txt"
@@ -135,7 +134,7 @@ while True:
             
             if optionChosen == "1":
                 print("File entry rules:")
-                print(" - ONLY txt is supported") # For now!
+                print(" - ONLY txt is supported") 
                 print(" - Do not enter the .txt at the end, otherwise you will get an error")
                 
                 outputFileName = input("Enter filename or path: ") + ".txt"
@@ -165,7 +164,7 @@ while True:
             
             if optionChosen == "1":
                 print("File entry rules:")
-                print(" - ONLY txt is supported") # For now!
+                print(" - ONLY txt is supported") 
                 print(" - Do not enter the .txt at the end, otherwise you will get an error")
                 
                 outputFileName = input("Enter filename or path: ") + ".txt"
@@ -183,7 +182,7 @@ while True:
                 
                 optionChosen = None
             
-    ### RSA
+    ### RSA ###
     #------------------------------------------------------------------------#       
             
             
@@ -199,7 +198,7 @@ while True:
                 clearTerminal()
                 
                 print("File entry rules:")
-                print(" - ONLY txt is supported") # For now!
+                print(" - ONLY txt is supported") 
                 print(" - Do not enter the .txt at the end, otherwise you will get an error")
                 
                 inputFileName = input("Enter filename or path: ") + ".txt"
@@ -226,7 +225,7 @@ while True:
                     if optionChosen == '1':
                         clearTerminal()
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
                         output = RSA_encode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
                         outputFileName = input("Enter filename or path: ") + ".txt"
@@ -241,7 +240,7 @@ while True:
                     
                     if optionChosen == '1':
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
                         output = RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue())
                         outputFileName = input("Enter filename or path: ") + ".txt"
@@ -278,7 +277,7 @@ while True:
                     if optionChosen == '1':
                         clearTerminal()
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
                         output = RSA_encode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
                         outputFileName = input("Enter filename or path: ") + ".txt"
@@ -300,7 +299,7 @@ while True:
                     optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
                     if optionChosen == '1':
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
                         output = RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue())
                         outputFileName = input("Enter filename or path: ") + ".txt"
@@ -325,7 +324,7 @@ while True:
                     optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
                     if optionChosen == '1':
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
                         output = RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue())
                         outputFileName = input("Enter filename or path: ") + ".txt"
@@ -350,7 +349,7 @@ while True:
                 clearTerminal()
 
                 print("File entry rules:")
-                print(" - ONLY txt is supported") # For now!
+                print(" - ONLY txt is supported") 
                 print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                 inputFileName = input("Enter filename or path: ") + ".txt"
@@ -374,7 +373,7 @@ while True:
                     
                     if optionChosen == '1':
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
                         output = RSA_decode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
                         outputFileName = input("Enter file name: ") + ".txt"
@@ -396,7 +395,7 @@ while True:
                     
                     if optionChosen == '1':
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
                         
                         output = RSA_decode(text, studentClassList[student].get_pubkey(), studentClassList[student].get_nValue())
@@ -420,7 +419,7 @@ while True:
                     optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
                     if optionChosen == '1':
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
                         
                         output = RSA_decode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
@@ -442,7 +441,7 @@ while True:
                     optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
                     if optionChosen == '1':
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
                         
                         output = RSA_decode(text, studentClassList[student].get_pubkey(), studentClassList[student].get_nValue())
@@ -459,7 +458,8 @@ while True:
                         input("press any key to dismiss")
                         optionChosen = None
                         
-    ### SIGNATURES ###
+    ### Signature ###
+    #------------------------------------------------------------------------#
     if optionChosen == '3':
         clearTerminal()
         optionChosen = menuFunction("Digital Signatures", ["Generate Signature", "Check Signature"],studentClassList)
@@ -476,7 +476,7 @@ while True:
                     clearTerminal()
 
                     print("File entry rules:")
-                    print(" - ONLY txt is supported") # For now!
+                    print(" - ONLY txt is supported") 
                     print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                     inputFileName = input("Enter file name: ") + ".txt"
@@ -499,7 +499,7 @@ while True:
                         clearTerminal()
                         
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                         output = gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
@@ -523,7 +523,7 @@ while True:
                     if optionChosen == '1':
                         clearTerminal()
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                         output = gen_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
@@ -549,7 +549,7 @@ while True:
                     clearTerminal()
 
                     print("File entry rules:")
-                    print(" - ONLY txt is supported") # For now!
+                    print(" - ONLY txt is supported") 
                     print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                     inputFileName = input("Enter file name: ") + ".txt"
@@ -571,7 +571,7 @@ while True:
                         clearTerminal()
                         
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                         output = gen_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue())
@@ -595,7 +595,7 @@ while True:
                     if optionChosen == '1':
                         clearTerminal()
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                         output = gen_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue())
@@ -622,7 +622,7 @@ while True:
                 if optionChosen == '1':
                     clearTerminal()
                     print("File entry rules:")
-                    print(" - ONLY txt is supported") # For now!
+                    print(" - ONLY txt is supported") 
                     print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                     inputFileName = input("Enter file name: ") + ".txt"
@@ -643,7 +643,7 @@ while True:
                     if optionChosen == '1':
                         clearTerminal()
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                         output = check_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
@@ -667,7 +667,7 @@ while True:
                     if optionChosen == '1':
                         clearTerminal()
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                         output = check_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
@@ -693,7 +693,7 @@ while True:
                     clearTerminal()
 
                     print("File entry rules:")
-                    print(" - ONLY txt is supported") # For now!
+                    print(" - ONLY txt is supported") 
                     print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                     inputFileName = input("Enter file name: ") + ".txt"
@@ -715,7 +715,7 @@ while True:
                         clearTerminal()
                         
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                         output = check_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue())
@@ -739,7 +739,7 @@ while True:
                     if optionChosen == '1':
                         clearTerminal()
                         print("File entry rules:")
-                        print(" - ONLY txt is supported") # For now!
+                        print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
                         output = check_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue())
@@ -755,7 +755,8 @@ while True:
                         input("press any key to dismiss")
                         optionChosen = None
             
-    ## Edit user ##
+    ### Edit user ###
+    #------------------------------------------------------------------------#
     if optionChosen == "4":
         optionChosen = menuFunction("User Settings", ["Custom RSA keys", "Change password", "Delete User"], studentClassList)
         if optionChosen == "1":
