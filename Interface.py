@@ -173,6 +173,7 @@ if optionChosen == "1":
 ### RSA
 #------------------------------------------------------------------------#       
         
+        
 if optionChosen == "2":
     optionChosen = menuFunction("RSA", ["Encrypt", "Decrypt"],studentClassList)
     
@@ -201,9 +202,26 @@ if optionChosen == "2":
                 elif x > 0:
                     text += " " + content[x]
             
-            optionChosen = menuFunction("Who's public key?", ["Mine", "Someone elses"],studentClassList)
+            optionChosen = menuFunction("Who's key?", ["My private", 'My public', "Someone elses"],studentClassList)
             
-            if optionChosen == "1":
+            clearTerminal()
+            if optionChosen == '1':
+                clearTerminal()
+
+                optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
+                if optionChosen == '1':
+                    clearTerminal()
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+                    output = RSA_encode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
+                    outputFileName = input("Enter filename or path: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
+                    input("press any key to dismiss")
+
+            if optionChosen == "2":
                 optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
                 
                 if optionChosen == '1':
@@ -215,6 +233,7 @@ if optionChosen == "2":
                     outputFile = open(outputFileName, "w")
                     outputFile.write(output)
                     outputFile.close()
+                    input("press any key to dismiss")
                     
                 if optionChosen == '2':
                     print(RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
@@ -226,22 +245,79 @@ if optionChosen == "2":
                 
                 student = search_by_name(studentName,studentClassList)
                 print(RSA_encode(text, student.get_pubkey(), student.get_nValue()))
-                
+                input("press any key to dismiss")
+
         if optionChosen == '2':
             clearTerminal()
-            optionChosen = menuFunction("Who's public key?", ["Mine", "Someone elses"],studentClassList)
+            optionChosen = menuFunction("Who's key?", ["My private", 'My public', "Someone elses"],studentClassList)
             clearTerminal()
             text = input('Enter text: ')
             
-            
-            if optionChosen == "1":
-                print(RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
-                input("press any key to dismiss")
+            if optionChosen == '1':
+                clearTerminal()
+
+                optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
+                if optionChosen == '1':
+                    clearTerminal()
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+                    output = RSA_encode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
+                    outputFileName = input("Enter filename or path: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
+                    input("press any key to dismiss")
                 
-            if optionChosen == '2':
+                if optionChosen == '2':
+                    clearTerminal()
+                    print(RSA_encode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+                    input("press any key to dismiss")
+
+            if optionChosen == "2":
+                clearTerminal()
+
+                optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
+                if optionChosen == '1':
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+                    output = RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue())
+                    outputFileName = input("Enter filename or path: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
+                    RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue())
+                    input("press any key to dismiss")
+                
+                if optionChosen == '2':
+                    clearTerminal()
+                    print(RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
+                    input("press any key to dismiss")
+
+            if optionChosen == '3':
+                clearTerminal()
                 studentName = input('Enter student name: ')
                 student = search_by_name(studentName,studentClassList)
-                RSA_encode(text, student.get_pubkey(),student.get_nValue())
+
+                optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
+                if optionChosen == '1':
+                    print("File entry rules:")
+                    print(" - ONLY txt is supported") # For now!
+                    print(" - Do not enter the .txt at the end, otherwise you will get an error")
+                    output = RSA_encode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue())
+                    outputFileName = input("Enter filename or path: ") + ".txt"
+                    outputFile = open(outputFileName, "w")
+                    outputFile.write(output)
+                    outputFile.close()
+                    RSA_encode(text, student.get_pubkey(),student.get_nValue())
+                    input("press any key to dismiss")
+                
+                if optionChosen == '2':
+                    clearTerminal()
+                    print(RSA_encode(text, student.get_pubkey(),student.get_nValue()))
+                    input("press any key to dismiss")
+
                 
     if optionChosen == "2":
         optionChosen = menuFunction("Decrypt", ["From file", "From terminal input"], studentClassList)
@@ -281,6 +357,7 @@ if optionChosen == "2":
                     outputFile = open(outputFileName, "w")
                     outputFile.write(output)
                     outputFile.close()
+                    input("press any key to dismiss")
                     
                 if optionChosen == '2':
                     print(RSA_decode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
@@ -302,6 +379,7 @@ if optionChosen == "2":
                     outputFile = open(outputFileName, "w")
                     outputFile.write(output)
                     outputFile.close()
+                    input("press any key to dismiss")
                     
                     
         if optionChosen == '2':
@@ -324,6 +402,7 @@ if optionChosen == "2":
                     outputFile = open(outputFileName, "w")
                     outputFile.write(output)
                     outputFile.close()
+                    input("press any key to dismiss")
                     
                 if optionChosen == '2':
                     print(RSA_decode(text, studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
@@ -343,14 +422,12 @@ if optionChosen == "2":
                     outputFile = open(outputFileName, "w")
                     outputFile.write(output)
                     outputFile.close()
+                    input("press any key to dismiss")
                 
                 if optionChosen == '2':
                     print(RSA_decode(text, studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
                     input("press any key to dismiss")
                     
-
-
-                
 ### SIGNATURES ###
 if optionChosen == '3':
     clearTerminal()
