@@ -216,7 +216,7 @@ while True:
                     elif x > 0:
                         text += " " + content[x]
                 
-                optionChosen = menuFunction("Who's key?", ["My private", 'My public', "Someone elses"],studentClassList)
+                optionChosen = menuFunction("Who's key?", ["My private", 'My public', "Someone else's public"],studentClassList)
                 
                 clearTerminal()
                 if optionChosen == '1':
@@ -367,8 +367,7 @@ while True:
                     elif x > 0:
                         text += " " + content[x]
 
-                optionChosen = menuFunction("Who's RSA key?", ["Your private key", "A public key"],studentClassList)
-                
+                optionChosen = menuFunction("Who's RSA key?", ["Your private", "Your public", "Someone else's public"],studentClassList) 
                 if optionChosen == '1':
                     optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
                     
@@ -389,7 +388,30 @@ while True:
                         input("press any key to dismiss")
                         optionChosen = None
                     
+
                 if optionChosen == '2':
+                    clearTerminal()
+
+                    optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
+                    if optionChosen == '1':
+                        print("File entry rules:")
+                        print(" - ONLY txt is supported") 
+                        print(" - Do not enter the .txt at the end, otherwise you will get an error")
+                        output = RSA_decode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue())
+                        outputFileName = input("Enter file name: ") + ".txt"
+                        outputFile = open(outputFileName, "w")
+                        outputFile.write(output)
+                        outputFile.close()
+                        input("press any key to dismiss")
+                        optionChosen = None
+                    
+                    if optionChosen == '2':
+                        clearTerminal()
+                        print(RSA_decode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
+                        input("press any key to dismiss")
+                        optionChosen = None
+
+                if optionChosen == '3':
                     studentName = input('Enter student name: ')
                     student = search_by_name(studentName,studentClassList)
                     optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
@@ -414,7 +436,7 @@ while True:
                 
                 text = input('Enter encoded message: ')
                 
-                optionChosen = menuFunction("Who's RSA key?", ["Your private key", "A public key"],studentClassList)
+                optionChosen = menuFunction("Who's RSA key?", ["Your private", "Your public", "Somebody else's public"],studentClassList)
                 
                 if optionChosen == '1':
                     optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
@@ -445,6 +467,31 @@ while True:
                         print(" - ONLY txt is supported") 
                         print(" - Do not enter the .txt at the end, otherwise you will get an error")
                         
+                        output = RSA_decode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue())
+                        
+                        outputFileName = input("Enter file name: ") + ".txt"
+                        outputFile = open(outputFileName, "w")
+                        outputFile.write(output)
+                        outputFile.close()
+                        input("press any key to dismiss")
+                        optionChosen = None
+                    
+                    if optionChosen == '2':
+                        print(RSA_decode(text, studentClassList[student_number].get_pubkey(), studentClassList[student_number].get_nValue()))
+                        input("press any key to dismiss")
+                        optionChosen = None
+
+                if optionChosen == '3':
+                    clearTerminal()
+                    studentName = input('Enter student name: ')
+                    student = search_by_name(studentName,studentClassList) 
+
+                    optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
+                    if optionChosen == '1':
+                        print("File entry rules:")
+                        print(" - ONLY txt is supported") 
+                        print(" - Do not enter the .txt at the end, otherwise you will get an error")
+                        
                         output = RSA_decode(text, studentClassList[student].get_pubkey(), studentClassList[student].get_nValue())
                         
                         outputFileName = input("Enter file name: ") + ".txt"
@@ -458,7 +505,7 @@ while True:
                         print(RSA_decode(text, studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
                         input("press any key to dismiss")
                         optionChosen = None
-                        
+                            
     ### Signature ###
     #------------------------------------------------------------------------#
     if optionChosen == '3':
@@ -615,7 +662,7 @@ while True:
         if optionChosen == '2':
             clearTerminal()
 
-            optionChosen = menuFunction("Who's key?",["My private","Somebody else's public"],studentClassList)
+            optionChosen = menuFunction("Who's key?",["My private","A public key"],studentClassList)
             if optionChosen == '1':
                 clearTerminal()
 
