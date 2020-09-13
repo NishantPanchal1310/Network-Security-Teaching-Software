@@ -367,7 +367,7 @@ while True:
                     elif x > 0:
                         text += " " + content[x]
 
-                optionChosen = menuFunction("Who's RSA key?", ["Your private key", "Someone else's public key"],studentClassList)
+                optionChosen = menuFunction("Who's RSA key?", ["Your private key", "A public key"],studentClassList)
                 
                 if optionChosen == '1':
                     optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
@@ -414,7 +414,7 @@ while True:
                 
                 text = input('Enter encoded message: ')
                 
-                optionChosen = menuFunction("Who's RSA key?", ["Your private key", "Someone else's public key"],studentClassList)
+                optionChosen = menuFunction("Who's RSA key?", ["Your private key", "A public key"],studentClassList)
                 
                 if optionChosen == '1':
                     optionChosen = menuFunction('Output format', ['Output to file', 'Output to terminal'],studentClassList)
@@ -752,7 +752,7 @@ while True:
                     
                     if optionChosen == '2':
                         clearTerminal()
-                        print(check_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
+                        print(check_sig(text, studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
                         input("press any key to dismiss")
                         optionChosen = None
             

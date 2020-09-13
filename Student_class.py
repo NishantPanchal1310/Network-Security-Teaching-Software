@@ -36,7 +36,7 @@ class students():
         self.password = password
 
 # function is used to create a new student.
-def new_student(name, e, d, n, password):
+def new_student(name, n, d, e, password):
     new_student = students(name, e, d, n, password)
     return new_student
 
