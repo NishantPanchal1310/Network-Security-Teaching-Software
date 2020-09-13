@@ -487,7 +487,7 @@ if optionChosen == '3':
                     print(" - ONLY txt is supported") # For now!
                     print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
-                    output = gen_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
+                    output = gen_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue())
                     
                     outputFileName = input("Enter file name: ") + ".txt"
                     outputFile = open(outputFileName, "w")
@@ -534,7 +534,7 @@ if optionChosen == '3':
                     print(" - ONLY txt is supported") # For now!
                     print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
-                    output = check_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue()))
+                    output = check_sig(text,studentClassList[student_number].get_privkey(), studentClassList[student_number].get_nValue())
                     
                     outputFileName = input("Enter file name: ") + ".txt"
                     outputFile = open(outputFileName, "w")
@@ -627,7 +627,7 @@ if optionChosen == '3':
                     print(" - ONLY txt is supported") # For now!
                     print(" - Do not enter the .txt at the end, otherwise you will get an error")
 
-                    output = check_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue()))
+                    output = check_sig(text,studentClassList[student].get_pubkey(), studentClassList[student].get_nValue())
                     
                     outputFileName = input("Enter file name: ") + ".txt"
                     outputFile = open(outputFileName, "w")
